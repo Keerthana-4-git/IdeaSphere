@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Project Details | IdeaSphere</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="project-details.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="top-bar">
+
+            <a href="home.html" class="back-btn">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Dashboard
+
+            </a>
+
+            <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+                class="logo"
+                alt="IdeaSphere Logo">
+
+        </div>
+
+        <!-- ================= TITLE ================= -->
+
+        <div class="project-header">
+
+            <h1 id="projectTitle">
+
+                Loading...
+
+            </h1>
+
+            <div class="badges">
+
+                <span id="category" class="badge">
+
+                    Category
+
+                </span>
+
+                <span id="priority" class="badge">
+
+                    Priority
+
+                </span>
+
+                <span id="stage" class="badge">
+
+                    Stage
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- ================= DETAILS ================= -->
+
+        <div class="details-card">
+
+            <div class="section">
+
+                <h2>
+
+                    🎯 Problem Statement
+
+                </h2>
+
+                <p id="problemText">
+
+                    Loading...
+
+                </p>
+
+            </div>
+
+            <div class="section">
+
+                <h2>
+
+                    💡 Solution
+
+                </h2>
+
+                <p id="solutionText">
+
+                    Loading...
+
+                </p>
+
+            </div>
+
+            <div class="section">
+
+                <h2>
+
+                    👥 Target Audience
+
+                </h2>
+
+                <p id="audienceText">
+
+                    Loading...
+
+                </p>
+
+            </div>
+
+            <div class="section">
+
+                <h2>
+
+                    📅 Created On
+
+                </h2>
+
+                <p id="createdDate">
+
+                    Loading...
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ================= BUTTONS ================= -->
+
+        <div class="button-group">
+
+            <button id="editBtn" class="edit-btn">
+
+                <i class="fa-solid fa-pen"></i>
+
+                Edit
+
+            </button>
+
+            <button id="deleteBtn" class="delete-btn">
+
+                <i class="fa-solid fa-trash"></i>
+
+                Delete
+
+            </button>
+
+            <!-- ================= SAVE IDEA ================= -->
+
+            <button id="saveBtn" class="save-btn">
+
+                <i id="saveIcon" class="fa-regular fa-heart"></i>
+
+                <span id="saveText">
+
+                    Save Idea
+
+                </span>
+
+            </button>
+
+            <button id="validateBtn" class="validate-btn">
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                Validate with AI
+
+            </button>
+
+        </div>
+
+        <!-- ===========================
+                DELETE MODAL
+        =========================== -->
+
+        <div id="deleteModal" class="modal">
+
+            <div class="modal-content">
+
+                <div class="delete-icon">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                </div>
+
+                <h2>
+
+                    Delete Idea?
+
+                </h2>
+
+                <p>
+
+                    Are you sure you want to delete this idea?
+
+                    <br><br>
+
+                    This action cannot be undone.
+
+                </p>
+
+                <div class="modal-buttons">
+
+                    <button id="cancelDelete">
+
+                        Cancel
+
+                    </button>
+
+                    <button id="confirmDelete">
+
+                        Delete
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="project-details.js"></script>
+
+</body>
+
+</html>

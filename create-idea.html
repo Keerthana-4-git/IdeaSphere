@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create New Idea | IdeaSphere</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="create-idea.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <a href="home.html" class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Dashboard
+
+        </a>
+
+        <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+     class="logo"
+     alt="IdeaSphere logo">
+
+    </div>
+
+    <!-- Title -->
+
+    <div class="title-section">
+
+        <h1>Create New Idea</h1>
+
+        <p>
+
+            Every successful startup begins with one great idea.
+
+        </p>
+
+    </div>
+
+    <!-- Form -->
+
+    <form id="ideaForm">
+
+        <!-- Idea Title -->
+
+        <div class="input-group">
+
+            <label>
+
+                💡 Idea Title
+
+            </label>
+
+            <input
+                type="text"
+                id="ideaTitle"
+                placeholder="Enter your idea title"
+                required>
+
+        </div>
+
+        <!-- Problem Statement -->
+
+        <div class="input-group">
+
+            <label>
+
+                🎯 Problem Statement
+
+            </label>
+
+            <textarea
+                id="problem"
+                rows="4"
+                placeholder="What problem does your idea solve?"
+                required></textarea>
+
+        </div>
+
+        <!-- Solution -->
+
+        <div class="input-group">
+
+            <label>
+
+                📝 Solution Description
+
+            </label>
+
+            <textarea
+                id="solution"
+                rows="5"
+                placeholder="Describe your solution..."
+                required></textarea>
+
+        </div>
+
+        <!-- Category -->
+
+<div class="input-group">
+
+    <label for="category">
+        🏷️ Category
+    </label>
+
+    <select id="category" name="category">
+
+        <option>Artificial Intelligence</option>
+
+        <option>Healthcare</option>
+
+        <option>Education</option>
+
+        <option>Finance</option>
+
+        <option>E-Commerce</option>
+
+        <option>Sustainability</option>
+
+        <option>Travel</option>
+
+        <option>Food & Beverage</option>
+
+        <option>Others</option>
+
+    </select>
+
+</div>
+
+        <!-- Target Audience -->
+
+        <div class="input-group">
+
+            <label>
+
+                👥 Target Audience
+
+            </label>
+
+            <input
+                type="text"
+                id="audience"
+                placeholder="Who will use this idea?">
+
+        </div>
+
+        <!-- Project Stage -->
+
+<div class="input-group">
+
+    <label for="stage">
+        🚀 Project Stage
+    </label>
+
+    <select id="stage" name="stage">
+
+        <option>Idea</option>
+
+        <option>Prototype</option>
+
+        <option>MVP</option>
+
+        <option>Launched</option>
+
+    </select>
+
+</div>
+
+        <!-- Priority -->
+
+        <div class="input-group">
+
+            <label>
+
+                ⭐ Priority
+
+            </label>
+
+            <select id="priority">
+
+                <option>High</option>
+
+                <option>Medium</option>
+
+                <option>Low</option>
+
+            </select>
+
+        </div>
+
+    <!-- Priority -->
+
+<div class="input-group">
+
+    <label for="priority">
+        ⭐ Priority
+    </label>
+
+    <select id="priority" name="priority">
+
+        <option>High</option>
+
+        <option>Medium</option>
+
+        <option>Low</option>
+
+    </select>
+
+</div>
+
+
+<!-- Image Upload -->
+
+<div class="input-group">
+
+    <label for="coverImage">
+        📷 Cover Image (Optional)
+    </label>
+
+    <input
+        type="file"
+        id="coverImage"
+        name="coverImage"
+        accept="image/*">
+
+</div>
+
+        <!-- Buttons -->
+
+        <div class="buttons">
+
+            <button
+                type="reset"
+                class="reset-btn">
+
+                Reset
+
+            </button>
+
+            <button
+                type="submit"
+                class="save-btn">
+
+                Save Idea
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<script src="sidebar.js"></script>
+<script src="js/api.js"></script>
+<script src="create-idea.js"></script>
+
+</body>
+
+</html>
+
+
+

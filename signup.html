@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up | IdeaSphere</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="signup.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Left Panel -->
+
+    <div class="left-section">
+
+        <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+            alt="IdeaSphere Logo"
+            class="logo">
+
+        <h1>Join IdeaSphere</h1>
+
+        <p>
+
+            Create your account and start turning
+            your innovative ideas into reality.
+
+        </p>
+
+    </div>
+
+    <!-- Right Panel -->
+
+    <div class="right-section">
+
+        <h2>Create Account</h2>
+
+        <form id="signupForm">
+
+            <!-- Full Name -->
+
+            <div class="input-box">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                    required>
+
+            </div>
+
+            <!-- Email -->
+
+            <div class="input-box">
+
+                <label>Email Address</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
+
+            </div>
+
+            <!-- Password -->
+
+            <div class="input-box">
+
+                <label>Password</label>
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a password"
+                        required>
+
+                    <i class="fa-solid fa-eye" id="togglePassword"></i>
+
+                </div>
+
+            </div>
+
+            <!-- Confirm Password -->
+
+            <div class="input-box">
+
+                <label>Confirm Password</label>
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm password"
+                        required>
+
+                    <i class="fa-solid fa-eye" id="toggleConfirmPassword"></i>
+
+                </div>
+
+            </div>
+
+            <!-- Create Button -->
+
+            <button type="submit">
+
+                Create Account
+
+            </button>
+
+            <!-- Divider -->
+
+            <div class="divider">
+
+                <span>OR</span>
+
+            </div>
+
+            <!-- Google -->
+
+            <button
+                type="button"
+                class="google-btn">
+
+                <i class="fa-brands fa-google"></i>
+
+                Continue with Google
+
+            </button>
+
+            <!-- Login -->
+
+            <div class="login-link">
+
+                Already have an account?
+
+                <a href="login.html">
+
+                    Sign In
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="signup.js"></script>
+
+</body>
+
+</html>

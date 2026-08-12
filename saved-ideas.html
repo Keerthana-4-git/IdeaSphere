@@ -1,0 +1,510 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+
+        <title>IdeaSphere | Saved Ideas</title>
+
+        <!-- ==================================================
+                            GOOGLE FONT
+        ================================================== -->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin
+        >
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        >
+
+        <!-- ==================================================
+                            FONT AWESOME
+        ================================================== -->
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        >
+
+        <!-- ==================================================
+                            SAVED IDEAS CSS
+        ================================================== -->
+
+        <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="saved-ideas.css">
+        >
+
+    </head>
+
+    <body data-page="saved">
+
+        <div class="dashboard">
+
+            <!-- ==========================================
+                IDEASPHERE SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+        <!-- =========================
+                LOGO
+        ========================== -->
+
+        <div class="logo-section">
+
+            <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+                alt="IdeaSphere Logo"
+                class="logo">
+
+            <h2>IdeaSphere</h2>
+
+        </div>
+
+
+        <!-- =========================
+                NAVIGATION
+        ========================== -->
+
+        <nav>
+
+            <ul>
+
+                <li data-page="home"
+                    onclick="location.href='home.html'">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Home</span>
+
+                </li>
+
+
+                <li data-page="explore"
+                    onclick="location.href='explore-ideas.html'">
+
+                    <i class="fa-solid fa-compass"></i>
+
+                    <span>Explore Ideas</span>
+
+                </li>
+
+
+                <li data-page="validator"
+                    onclick="location.href='ai-validator.html'">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    <span>AI Validator</span>
+
+                </li>
+
+
+                <li data-page="create"
+                    onclick="location.href='create-idea.html'">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    <span>Create Idea</span>
+
+                </li>
+
+
+                <li data-page="saved"
+                    onclick="location.href='saved-ideas.html'">
+
+                    <i class="fa-solid fa-bookmark"></i>
+
+                    <span>Saved Ideas</span>
+
+                </li>
+
+
+                <li data-page="analytics"
+                    onclick="location.href='analytics.html'">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Analytics</span>
+
+                </li>
+
+
+                <li data-page="collaboration"
+                    onclick="location.href='collaborate.html'">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <span>Collaboration</span>
+
+                </li>
+
+
+                <li data-page="workspace"
+                    onclick="location.href='workspace.html'">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <span>Workspace</span>
+
+                </li>
+
+
+                <li data-page="settings"
+                    onclick="location.href='settings.html'">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <span>Settings</span>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <!-- =========================
+                LOGOUT
+        ========================== -->
+
+        <button class="logout-btn" id="logoutBtn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </button>
+
+    </aside>
+
+
+            <!-- ==================================================
+                                MAIN CONTENT
+            ================================================== -->
+
+            <main class="main-content">
+
+                <!-- ==================================================
+                                    HERO
+                ================================================== -->
+
+                <section class="hero">
+
+                    <div class="hero-decoration hero-decoration-one"></div>
+
+                    <div class="hero-decoration hero-decoration-two"></div>
+
+
+                    <div class="hero-content">
+
+                        <div class="hero-copy">
+
+                            <span class="hero-label">
+
+                                <i class="fa-solid fa-bookmark"></i>
+
+                                YOUR IDEA COLLECTION
+
+                            </span>
+
+
+                            <h1>
+
+                                Ideas worth
+
+                                <span>remembering.</span>
+
+                            </h1>
+
+
+                            <p>
+
+                                Keep inspiring ideas close, revisit your own
+                                concepts and continue building whenever
+                                inspiration strikes.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="hero-visual">
+
+                            <div class="orbit orbit-one"></div>
+
+                            <div class="orbit orbit-two"></div>
+
+
+                            <div class="hero-heart">
+
+                                <i class="fa-solid fa-heart"></i>
+
+                            </div>
+
+
+                            <div class="floating-spark spark-one">
+
+                                <i class="fa-solid fa-star"></i>
+
+                            </div>
+
+
+                            <div class="floating-spark spark-two">
+
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ==================================================
+                                SAVED IDEAS SECTION
+                ================================================== -->
+
+                <section class="saved-section">
+
+                    <!-- ==================================================
+                                    SECTION HEADER
+                    ================================================== -->
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <span class="section-label">
+
+                                <i class="fa-solid fa-heart"></i>
+
+                                SAVED COLLECTION
+
+                            </span>
+
+
+                            <h2>Your Saved Ideas</h2>
+
+
+                            <p>
+
+                                Revisit, validate and continue building the
+                                ideas that caught your attention.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="saved-count">
+
+                            <div class="count-icon">
+
+                                <i class="fa-solid fa-heart"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <strong id="savedCountNumber">0</strong>
+
+                                <span id="savedCount">Saved Ideas</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                                    CONTROLS
+                    ================================================== -->
+
+                    <div class="saved-controls">
+
+                        <!-- TABS -->
+
+                        <div
+                            class="saved-tabs"
+                            role="tablist"
+                            aria-label="Saved idea filters"
+                        >
+
+                            <button
+                                class="saved-tab active"
+                                data-filter="all"
+                            >
+
+                                <i class="fa-solid fa-layer-group"></i>
+
+                                All Saved
+
+                                <span id="allCount">0</span>
+
+                            </button>
+
+
+                            <button
+                                class="saved-tab"
+                                data-filter="my"
+                            >
+
+                                <i class="fa-solid fa-lightbulb"></i>
+
+                                My Ideas
+
+                                <span id="myCount">0</span>
+
+                            </button>
+
+
+                            <button
+                                class="saved-tab"
+                                data-filter="explore"
+                            >
+
+                                <i class="fa-solid fa-compass"></i>
+
+                                From Explore
+
+                                <span id="exploreCount">0</span>
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- SEARCH -->
+
+                        <div class="saved-search">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                type="text"
+                                id="savedSearchInput"
+                                placeholder="Search saved ideas..."
+                                autocomplete="off"
+                            >
+
+                            <button
+                                id="clearSavedSearch"
+                                aria-label="Clear search"
+                            >
+
+                                <i class="fa-solid fa-xmark"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                                RESULT INFORMATION
+                    ================================================== -->
+
+                    <div class="results-bar">
+
+                        <p>
+
+                            Showing
+
+                            <strong id="visibleSavedCount">0</strong>
+
+                            saved ideas
+
+                        </p>
+
+
+                        <div class="collection-status">
+
+                            <span class="status-dot"></span>
+
+                            Your collection is saved locally
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                                SAVED IDEAS CONTAINER
+                    ================================================== -->
+
+                    <div
+                        id="savedIdeasContainer"
+                        class="saved-ideas-grid"
+                    ></div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+
+        <!-- ==================================================
+                                TOAST
+        ================================================== -->
+
+        <div
+            id="savedToast"
+            class="saved-toast"
+            role="status"
+            aria-live="polite"
+        >
+
+            <div class="toast-icon">
+
+                <i class="fa-solid fa-heart"></i>
+
+            </div>
+
+
+            <div>
+
+                <strong id="savedToastTitle">
+
+                    Idea Updated
+
+                </strong>
+
+                <p id="savedToastMessage">
+
+                    Your saved collection has been updated.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+                            SAVED IDEAS JS
+        ================================================== -->
+
+        <script src="sidebar.js"></script>
+    <script src="saved-ideas.js"></script>
+
+    </body>
+
+    </html>

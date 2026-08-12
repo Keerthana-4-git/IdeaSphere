@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IdeaSphere | Settings</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="settings.css">
+
+</head>
+
+<body data-page="settings">
+
+<!-- Sidebar -->
+
+<!-- ==========================================
+            IDEASPHERE SIDEBAR
+========================================== -->
+
+<aside class="sidebar">
+
+    <!-- =========================
+            LOGO
+    ========================== -->
+
+    <div class="logo-section">
+
+        <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+             alt="IdeaSphere Logo"
+             class="logo">
+
+        <h2>IdeaSphere</h2>
+
+    </div>
+
+
+    <!-- =========================
+            NAVIGATION
+    ========================== -->
+
+    <nav>
+
+        <ul>
+
+            <li data-page="home"
+                onclick="location.href='home.html'">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Home</span>
+
+            </li>
+
+
+            <li data-page="explore"
+                onclick="location.href='explore-ideas.html'">
+
+                <i class="fa-solid fa-compass"></i>
+
+                <span>Explore Ideas</span>
+
+            </li>
+
+
+            <li data-page="validator"
+                onclick="location.href='ai-validator.html'">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <span>AI Validator</span>
+
+            </li>
+
+
+            <li data-page="create"
+                onclick="location.href='create-idea.html'">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>Create Idea</span>
+
+            </li>
+
+
+            <li data-page="saved"
+                onclick="location.href='saved-ideas.html'">
+
+                <i class="fa-solid fa-bookmark"></i>
+
+                <span>Saved Ideas</span>
+
+            </li>
+
+
+            <li data-page="analytics"
+                onclick="location.href='analytics.html'">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Analytics</span>
+
+            </li>
+
+
+            <li data-page="collaboration"
+                onclick="location.href='collaborate.html'">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>Collaboration</span>
+
+            </li>
+
+
+            <li data-page="workspace"
+                onclick="location.href='workspace.html'">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <span>Workspace</span>
+
+            </li>
+
+
+            <li data-page="settings"
+                onclick="location.href='settings.html'">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+            LOGOUT
+    ========================== -->
+
+    <button class="logout-btn" id="logoutBtn">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </button>
+
+</aside>
+
+<!-- Main -->
+
+<div class="main">
+
+    <div class="page-header">
+
+        <h1>Settings</h1>
+
+        <p>Manage your account and IdeaSphere preferences.</p>
+
+    </div>
+
+    <!-- Profile -->
+
+    <div class="settings-card profile-card">
+
+        <div class="profile-avatar" id="profileInitial">
+
+    K
+
+</div>
+
+        <div>
+
+            <h2 id="profileHeaderName">Keerthana</h2>
+
+<p id="profileHeaderRole">Workspace Owner</p>
+
+<small id="profileBio">Building ideas into reality ✨</small>
+
+        </div>
+
+        <button class="edit-btn">
+
+            <i class="fa-solid fa-pen"></i>
+
+            Edit Profile
+
+        </button>
+
+    </div>
+
+    <!-- Grid -->
+
+    <div class="settings-grid">
+
+        <div class="settings-card">
+
+            <h3>
+
+                <i class="fa-solid fa-user"></i>
+
+                Profile
+
+            </h3>
+
+            <p>Name</p>
+
+           <strong id="profileName">Keerthana</strong>
+
+            <hr>
+
+            <p>Username</p>
+
+            <strong id="profileUsername">@keerthana</strong>
+
+        </div>
+
+        <div class="settings-card">
+
+            <h3>
+
+                <i class="fa-solid fa-palette"></i>
+
+                Appearance
+
+            </h3>
+
+            <p>Theme</p>
+
+            <strong>Light Mode</strong>
+
+            <hr>
+
+            <p>Dark Mode</p>
+
+            <strong>Coming Soon</strong>
+
+        </div>
+
+        <div class="settings-card">
+
+            <h3>
+
+                <i class="fa-solid fa-bell"></i>
+
+                Notifications
+
+            </h3>
+
+            <label class="switch" title="Enable workspace notifications">
+    <input
+        type="checkbox"
+        id="notificationToggle"
+        aria-label="Enable workspace notifications"
+        checked
+    >
+    <span class="slider"></span>
+</label>
+
+            <p>Workspace Updates</p>
+
+        </div>
+
+        <div class="settings-card">
+
+            <h3>
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Privacy & Security
+
+            </h3>
+
+            <p>✔ Local Storage</p>
+
+            <p>✔ Secure Backup</p>
+
+            <p>✔ Device Protected</p>
+
+        </div>
+
+        <div class="settings-card">
+
+            <h3>
+
+                <i class="fa-solid fa-cloud"></i>
+
+                Cloud Sync
+
+            </h3>
+
+            <p>Last Sync</p>
+
+            <strong id="lastSyncDisplay">Never</strong>
+
+            <button id="openCloudSync">
+
+                Open Cloud Sync
+
+            </button>
+
+        </div>
+
+        <div class="settings-card">
+
+            <h3>
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                About IdeaSphere
+
+            </h3>
+
+            <p>Version</p>
+
+            <strong>1.0</strong>
+
+            <hr>
+
+            <p>Developer</p>
+
+            <strong>Keerthana</strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+        EDIT PROFILE MODAL
+========================================== -->
+
+<div class="modal-overlay" id="editProfileModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2>Edit Profile</h2>
+
+            <button id="closeProfileModal">&times;</button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <label>Name</label>
+
+            <input
+                type="text"
+                id="profileNameInput"
+                placeholder="Enter your name">
+
+            <label>Username</label>
+
+            <input
+                type="text"
+                id="profileUsernameInput"
+                placeholder="@username">
+
+            <label>Bio</label>
+
+            <textarea
+                id="profileBioInput"
+                rows="4"
+                placeholder="Tell us about yourself"></textarea>
+
+            <button id="saveProfileBtn">
+
+                Save Changes
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="sidebar.js"></script>
+<script src="settings.js"></script>
+
+</body>
+
+</html>

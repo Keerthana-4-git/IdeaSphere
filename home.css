@@ -1,0 +1,675 @@
+/* ==================================================
+                GOOGLE FONT
+================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==================================================
+                    RESET
+================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#F8F8FA;
+
+}
+
+
+@media(max-width:800px){
+
+.sidebar{
+
+    transform:translateX(-100%);
+
+}
+
+.main-content{
+
+    margin-left:0;
+
+    width:100%;
+
+    padding:35px;
+
+}
+
+}
+
+
+/* ==================================================
+                  TOP BAR
+================================================== */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.search-box{
+
+    width:420px;
+
+    height:55px;
+
+    background:#fff;
+
+    border-radius:50px;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 20px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.05);
+
+}
+
+.search-box i{
+
+    color:#888;
+
+    margin-right:12px;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    font-size:16px;
+
+    background:transparent;
+
+}
+
+.top-icons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+.top-icons i{
+
+    font-size:24px;
+
+    color:#555;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.top-icons i:hover{
+
+    color:#7A0F14;
+
+}
+
+.profile{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    cursor:pointer;
+
+}
+
+/* ==================================================
+               WELCOME CARD
+================================================== */
+
+.welcome-card{
+
+    width:100%;
+
+    background:linear-gradient(135deg,#7A0F14,#A71D31);
+
+    color:#fff;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    margin-bottom:35px;
+
+    box-shadow:0 20px 40px rgba(122,15,20,.25);
+
+}
+
+.welcome-card h1{
+
+    font-size:38px;
+
+    margin-bottom:15px;
+
+}
+
+.welcome-card p{
+
+    font-size:18px;
+
+    opacity:.95;
+
+    margin-bottom:30px;
+
+    line-height:30px;
+
+}
+
+.welcome-card button{
+
+    border:none;
+
+    padding:16px 35px;
+
+    border-radius:50px;
+
+    background:#F2E85C;
+
+    color:#7A0F14;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.welcome-card button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+
+}
+/* ==================================================
+                DASHBOARD CARDS
+================================================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+
+    gap:25px;
+
+    margin-bottom:40px;
+
+    align-items:stretch;
+
+}
+
+.card{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(122,15,20,.15);
+
+}
+
+.card i{
+
+    font-size:34px;
+
+    color:#7A0F14;
+
+    margin-bottom:20px;
+
+}
+
+.card h3{
+
+    font-size:20px;
+
+    margin-bottom:12px;
+
+    color:#222;
+
+}
+
+.card p{
+
+    color:#666;
+
+    line-height:28px;
+
+    font-size:15px;
+
+}
+
+/* ==================================================
+                RECENT IDEAS
+================================================== */
+
+.recent-section{
+
+    margin-top:10px;
+
+}
+
+.recent-section h2{
+
+    font-size:28px;
+
+    color:#222;
+
+    margin-bottom:25px;
+
+}
+
+.idea-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+    border-left:6px solid #7A0F14;
+
+}
+
+.idea-card:hover{
+
+    transform:translateX(8px);
+
+    box-shadow:0 15px 35px rgba(122,15,20,.12);
+
+}
+
+.idea-card h3{
+
+    color:#7A0F14;
+
+    margin-bottom:10px;
+
+    font-size:22px;
+
+}
+
+.idea-card p{
+
+    color:#666;
+
+    line-height:28px;
+
+}
+
+/* ==================================================
+                SCROLLBAR
+================================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#7A0F14;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#F3F3F3;
+
+}
+
+/* ==================================================
+                ANIMATIONS
+================================================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.card{
+
+    animation:fadeUp .7s ease;
+
+}
+
+.idea-card{
+
+    animation:fadeUp .8s ease;
+
+}
+
+/* ==================================================
+                RESPONSIVE
+================================================== */
+
+@media(max-width:1100px){
+
+    .cards{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    body{
+
+        flex-direction:column;
+
+    }
+
+
+    .main-content{
+
+        width:100%;
+
+        margin-left:0;
+
+        padding:25px;
+
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        align-items:flex-start;
+
+    }
+
+    .search-box{
+
+        width:100%;
+
+    }
+
+    .cards{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .welcome-card{
+
+        padding:30px;
+
+    }
+
+    .welcome-card h1{
+
+        font-size:28px;
+
+    }
+
+    .welcome-card p{
+
+        font-size:15px;
+
+    }
+
+    .welcome-card button{
+
+        width:100%;
+
+    }
+
+}
+/* ==================================================
+                EMPTY STATE
+================================================== */
+
+.empty-state{
+
+    background:#ffffff;
+
+    padding:60px 40px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+}
+
+.empty-state i{
+
+    font-size:70px;
+
+    color:#7A0F14;
+
+    margin-bottom:20px;
+
+}
+
+.empty-state h3{
+
+    font-size:28px;
+
+    color:#7A0F14;
+
+    margin-bottom:15px;
+
+}
+
+.empty-state p{
+
+    color:#666;
+
+    font-size:17px;
+
+    line-height:30px;
+
+}
+
+/* ==================================================
+                DYNAMIC IDEA CARD
+================================================== */
+
+.idea-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    margin-bottom:20px;
+
+    border-left:6px solid #7A0F14;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.06);
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.idea-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 35px rgba(122,15,20,.15);
+
+}
+
+.idea-card h3{
+
+    color:#7A0F14;
+
+    margin-bottom:10px;
+
+    font-size:24px;
+
+}
+
+.idea-meta{
+
+    display:flex;
+
+    gap:12px;
+
+    margin:18px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.idea-tag{
+
+    background:#F7ECEE;
+
+    color:#7A0F14;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.idea-card p{
+
+    color:#555;
+
+    line-height:28px;
+
+}
+/* ==========================================
+            PROFILE AVATAR
+========================================== */
+
+.top-icons{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.profile-avatar{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    background:#7A0F14;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    user-select:none;
+
+    text-transform:uppercase;
+
+    box-shadow:0 10px 20px rgba(122,15,20,.20);
+
+}
+
+.profile-avatar:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 15px 30px rgba(122,15,20,.35);
+
+}

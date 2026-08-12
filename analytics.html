@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>IdeaSphere | Analytics</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Analytics CSS -->
+
+   <link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="analytics.css">
+
+</head>
+
+
+<body data-page="analytics">
+
+
+<div class="dashboard">
+
+
+    <!-- ==========================================
+            IDEASPHERE SIDEBAR
+========================================== -->
+
+<aside class="sidebar">
+
+    <!-- =========================
+            LOGO
+    ========================== -->
+
+    <div class="logo-section">
+
+        <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+             alt="IdeaSphere Logo"
+             class="logo">
+
+        <h2>IdeaSphere</h2>
+
+    </div>
+
+
+    <!-- =========================
+            NAVIGATION
+    ========================== -->
+
+    <nav>
+
+        <ul>
+
+            <li data-page="home"
+                onclick="location.href='home.html'">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Home</span>
+
+            </li>
+
+
+            <li data-page="explore"
+                onclick="location.href='explore-ideas.html'">
+
+                <i class="fa-solid fa-compass"></i>
+
+                <span>Explore Ideas</span>
+
+            </li>
+
+
+            <li data-page="validator"
+                onclick="location.href='ai-validator.html'">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <span>AI Validator</span>
+
+            </li>
+
+
+            <li data-page="create"
+                onclick="location.href='create-idea.html'">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>Create Idea</span>
+
+            </li>
+
+
+            <li data-page="saved"
+                onclick="location.href='saved-ideas.html'">
+
+                <i class="fa-solid fa-bookmark"></i>
+
+                <span>Saved Ideas</span>
+
+            </li>
+
+
+            <li data-page="analytics"
+                onclick="location.href='analytics.html'">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Analytics</span>
+
+            </li>
+
+
+            <li data-page="collaboration"
+                onclick="location.href='collaborate.html'">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>Collaboration</span>
+
+            </li>
+
+
+            <li data-page="workspace"
+                onclick="location.href='workspace.html'">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <span>Workspace</span>
+
+            </li>
+
+
+            <li data-page="settings"
+                onclick="location.href='settings.html'">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+            LOGOUT
+    ========================== -->
+
+    <button class="logout-btn" id="logoutBtn">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </button>
+
+</aside>
+
+
+
+    <!-- ==================================================
+            MAIN CONTENT
+    ================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ==================================================
+                PAGE HEADER
+        ================================================== -->
+
+        <section class="page-header">
+
+
+            <div>
+
+                <p class="page-label">
+
+                    PERFORMANCE INSIGHTS
+
+                </p>
+
+
+                <h1>
+
+                    Idea Analytics
+
+                    <span>ılıılı</span>
+
+                </h1>
+
+
+                <p class="page-description">
+
+                    Track your ideas, AI validation scores
+                    and innovation performance.
+
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="validateIdeaBtn"
+                class="validate-btn">
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                Validate an Idea
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+                OVERVIEW CARDS
+        ================================================== -->
+
+        <section class="overview-grid">
+
+
+            <!-- TOTAL IDEAS -->
+
+            <article class="overview-card">
+
+
+                <div class="overview-icon">
+
+                    <i class="fa-regular fa-lightbulb"></i>
+
+                </div>
+
+
+                <div>
+
+                    <p>Total Ideas</p>
+
+                    <h2 id="totalIdeas">
+
+                        0
+
+                    </h2>
+
+                    <span>
+
+                        Ideas in your workspace
+
+                    </span>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- VALIDATED IDEAS -->
+
+            <article class="overview-card">
+
+
+                <div class="overview-icon">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+
+                <div>
+
+                    <p>AI Validated</p>
+
+                    <h2 id="validatedIdeas">
+
+                        0
+
+                    </h2>
+
+                    <span>
+
+                        Analyzed by IdeaSphere AI
+
+                    </span>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- AVERAGE SCORE -->
+
+            <article class="overview-card">
+
+
+                <div class="overview-icon">
+
+                    <i class="fa-solid fa-chart-simple"></i>
+
+                </div>
+
+
+                <div>
+
+                    <p>Average AI Score</p>
+
+                    <h2 id="averageScore">
+
+                        0%
+
+                    </h2>
+
+                    <span>
+
+                        Across validated ideas
+
+                    </span>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- STRONGEST IDEA -->
+
+            <article class="overview-card">
+
+
+                <div class="overview-icon">
+
+                    <i class="fa-solid fa-trophy"></i>
+
+                </div>
+
+
+                <div>
+
+                    <p>Strongest Idea</p>
+
+                    <h2
+                        id="strongestIdea"
+                        class="strongest-name">
+
+                        —
+
+                    </h2>
+
+                    <span>
+
+                        Highest AI score
+
+                    </span>
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+                PERFORMANCE OVERVIEW
+        ================================================== -->
+
+        <section class="analytics-section">
+
+
+            <div class="section-heading">
+
+
+                <div>
+
+                    <p class="section-label">
+
+                        AI PERFORMANCE
+
+                    </p>
+
+
+                    <h2>
+
+                        Performance Overview
+
+                    </h2>
+
+                </div>
+
+
+                <span class="section-badge">
+
+                    Validated Ideas
+
+                </span>
+
+
+            </div>
+
+
+
+            <div class="performance-grid">
+
+
+                <!-- INNOVATION -->
+
+                <article class="performance-card">
+
+
+                    <div class="performance-top">
+
+                        <div class="performance-title">
+
+                            <span class="metric-icon">
+
+                                💡
+
+                            </span>
+
+                            <h3>Innovation</h3>
+
+                        </div>
+
+
+                        <strong id="averageInnovation">
+
+                            0%
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-progress">
+
+                        <div
+                            id="innovationBar"
+                            class="metric-progress-bar">
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        Average originality and differentiation.
+
+                    </p>
+
+
+                </article>
+
+
+
+                <!-- MARKET -->
+
+                <article class="performance-card">
+
+
+                    <div class="performance-top">
+
+                        <div class="performance-title">
+
+                            <span class="metric-icon">
+
+                                📈
+
+                            </span>
+
+                            <h3>Market Demand</h3>
+
+                        </div>
+
+
+                        <strong id="averageMarket">
+
+                            0%
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-progress">
+
+                        <div
+                            id="marketBar"
+                            class="metric-progress-bar">
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        Average user need and market relevance.
+
+                    </p>
+
+
+                </article>
+
+
+
+                <!-- FEASIBILITY -->
+
+                <article class="performance-card">
+
+
+                    <div class="performance-top">
+
+                        <div class="performance-title">
+
+                            <span class="metric-icon">
+
+                                ⚙️
+
+                            </span>
+
+                            <h3>Feasibility</h3>
+
+                        </div>
+
+
+                        <strong id="averageFeasibility">
+
+                            0%
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-progress">
+
+                        <div
+                            id="feasibilityBar"
+                            class="metric-progress-bar">
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        Average execution and MVP practicality.
+
+                    </p>
+
+
+                </article>
+
+
+
+                <!-- REVENUE -->
+
+                <article class="performance-card">
+
+
+                    <div class="performance-top">
+
+                        <div class="performance-title">
+
+                            <span class="metric-icon">
+
+                                💰
+
+                            </span>
+
+                            <h3>Revenue Potential</h3>
+
+                        </div>
+
+
+                        <strong id="averageRevenue">
+
+                            0%
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-progress">
+
+                        <div
+                            id="revenueBar"
+                            class="metric-progress-bar">
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        Average monetization and scalability potential.
+
+                    </p>
+
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+                IDEA COMPARISON
+        ================================================== -->
+
+        <section class="analytics-section">
+
+
+            <div class="section-heading">
+
+
+                <div>
+
+                    <p class="section-label">
+
+                        SCORE COMPARISON
+
+                    </p>
+
+
+                    <h2>
+
+                        Idea Performance
+
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div
+                id="ideaComparison"
+                class="comparison-list">
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+                BOTTOM ANALYTICS GRID
+        ================================================== -->
+
+        <section class="bottom-grid">
+
+
+            <!-- TOP IDEA -->
+
+            <article class="top-idea-card">
+
+
+                <div class="top-idea-icon">
+
+                    <i class="fa-solid fa-trophy"></i>
+
+                </div>
+
+
+                <p class="section-label">
+
+                    TOP PERFORMING IDEA
+
+                </p>
+
+
+                <h2 id="topIdeaTitle">
+
+                    No validated ideas yet
+
+                </h2>
+
+
+                <p
+                    id="topIdeaCategory"
+                    class="top-idea-category">
+
+                    Validate an idea to discover your
+                    strongest concept.
+
+                </p>
+
+
+                <div class="top-score">
+
+
+                    <span id="topIdeaScore">
+
+                        0%
+
+                    </span>
+
+
+                    <p id="topIdeaPotential">
+
+                        Awaiting AI Analysis
+
+                    </p>
+
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="openTopIdeaBtn"
+                    class="top-idea-btn">
+
+                    View Project
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+            </article>
+
+
+
+            <!-- VALIDATION STATUS -->
+
+            <article class="status-card">
+
+
+                <div class="section-heading compact">
+
+
+                    <div>
+
+                        <p class="section-label">
+
+                            WORKSPACE STATUS
+
+                        </p>
+
+
+                        <h2>
+
+                            Validation Status
+
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="status-item">
+
+
+                    <div class="status-info">
+
+
+                        <span class="status-dot validated">
+
+                        </span>
+
+
+                        <div>
+
+                            <h3>Validated</h3>
+
+                            <p>
+
+                                AI analysis completed
+
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <strong id="validatedStatusCount">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <div class="status-item">
+
+
+                    <div class="status-info">
+
+
+                        <span class="status-dot pending">
+
+                        </span>
+
+
+                        <div>
+
+                            <h3>Awaiting Analysis</h3>
+
+                            <p>
+
+                                Ideas not yet validated
+
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <strong id="pendingStatusCount">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+                <div class="status-summary">
+
+
+                    <div class="status-summary-top">
+
+                        <span>
+
+                            Validation Progress
+
+                        </span>
+
+                        <strong id="validationPercentage">
+
+                            0%
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="validation-progress">
+
+                        <div id="validationProgressBar">
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+                RECENT VALIDATIONS
+        ================================================== -->
+
+        <section class="analytics-section">
+
+
+            <div class="section-heading">
+
+
+                <div>
+
+                    <p class="section-label">
+
+                        AI HISTORY
+
+                    </p>
+
+
+                    <h2>
+
+                        Recent AI Validations
+
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div
+                id="recentValidations"
+                class="recent-validation-list">
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- Analytics JavaScript -->
+
+<script src="sidebar.js"></script>
+<script src="analytics.js"></script>
+
+
+</body>
+
+</html>

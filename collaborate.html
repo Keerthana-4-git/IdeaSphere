@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdeaSphere | Collaboration Hub</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="collaborate.css">
+</head>
+
+<body data-page="collaboration">
+
+
+    <!-- ==========================================
+            IDEASPHERE SIDEBAR
+========================================== -->
+
+<aside class="sidebar">
+
+    <!-- =========================
+            LOGO
+    ========================== -->
+
+    <div class="logo-section">
+
+        <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+             alt="IdeaSphere Logo"
+             class="logo">
+
+        <h2>IdeaSphere</h2>
+
+    </div>
+
+
+    <!-- =========================
+            NAVIGATION
+    ========================== -->
+
+    <nav>
+
+        <ul>
+
+            <li data-page="home"
+                onclick="location.href='home.html'">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Home</span>
+
+            </li>
+
+
+            <li data-page="explore"
+                onclick="location.href='explore-ideas.html'">
+
+                <i class="fa-solid fa-compass"></i>
+
+                <span>Explore Ideas</span>
+
+            </li>
+
+
+            <li data-page="validator"
+                onclick="location.href='ai-validator.html'">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <span>AI Validator</span>
+
+            </li>
+
+
+            <li data-page="create"
+                onclick="location.href='create-idea.html'">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>Create Idea</span>
+
+            </li>
+
+
+            <li data-page="saved"
+                onclick="location.href='saved-ideas.html'">
+
+                <i class="fa-solid fa-bookmark"></i>
+
+                <span>Saved Ideas</span>
+
+            </li>
+
+
+            <li data-page="analytics"
+                onclick="location.href='analytics.html'">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Analytics</span>
+
+            </li>
+
+
+            <li data-page="collaboration"
+                onclick="location.href='collaborate.html'">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>Collaboration</span>
+
+            </li>
+
+
+            <li data-page="workspace"
+                onclick="location.href='workspace.html'">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <span>Workspace</span>
+
+            </li>
+
+
+            <li data-page="settings"
+                onclick="location.href='settings.html'">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+            LOGOUT
+    ========================== -->
+
+    <button class="logout-btn" id="logoutBtn">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </button>
+
+</aside>
+
+    <!-- ===================================== -->
+    <!-- Main Content -->
+    <!-- ===================================== -->
+
+    <main class="main-content">
+
+        <!-- ========================= -->
+        <!-- Top Navigation -->
+        <!-- ========================= -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <h1>
+                    Collaboration Hub
+                </h1>
+
+                <p>
+                    Organize your ideas into beautiful workspaces and prepare for future collaboration.
+                </p>
+
+            </div>
+
+
+
+        </header>
+
+        <!-- ========================= -->
+        <!-- Hero -->
+        <!-- ========================= -->
+
+        <section class="hero-section">
+
+            <div class="hero-text">
+
+                <span class="hero-tag">
+                    <i class="fa-solid fa-users"></i>
+                    Collaboration
+                </span>
+
+                <h2>
+                    Build Better Ideas Together
+                </h2>
+
+                <p>
+
+                    Create workspaces to organize your startup ideas,
+                    keep projects structured and prepare for future team
+                    collaboration.
+
+                </p>
+
+                <button class="hero-btn" id="heroCreateBtn">
+
+                    <i class="fa-solid fa-folder-plus"></i>
+
+                    New Workspace
+
+                </button>
+
+            </div>
+
+            <div class="hero-illustration">
+
+                <div class="floating-card">
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                    <h3>Creative Thinking</h3>
+
+                    <p>
+                        Every great startup begins with one brilliant idea.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================= -->
+        <!-- Search -->
+        <!-- ========================= -->
+
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="workspaceSearch"
+                    placeholder="Search your workspace..."
+                >
+
+            </div>
+
+        </section>
+
+        <!-- ========================= -->
+        <!-- Statistics -->
+        <!-- ========================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon workspace-icon">
+
+                    <i class="fa-solid fa-folder-open"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h3 id="workspaceCount">0</h3>
+
+                    <p>Workspaces</p>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon member-icon">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h3 id="memberCount">0</h3>
+
+                    <p>Members</p>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon completed-icon">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h3 id="completedCount">0</h3>
+
+                    <p>Completed</p>
+
+                </div>
+
+            </div>
+
+        </section>
+                <!-- ========================= -->
+        <!-- Workspaces -->
+        <!-- ========================= -->
+
+        <section class="workspace-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Your Workspaces</h2>
+
+                    <p>
+                        All the collaboration workspaces you create will appear here.
+                    </p>
+
+                </div>
+
+                <button class="secondary-btn" id="createWorkspaceBtn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Create Workspace
+
+                </button>
+
+            </div>
+
+            <!-- Workspace Grid -->
+
+            <div class="workspace-grid" id="workspaceGrid">
+
+                <!-- Empty State -->
+
+                <div class="empty-state" id="emptyState">
+
+                    <div class="empty-icon">
+
+                        <i class="fa-solid fa-folder-open"></i>
+
+                    </div>
+
+                    <h3>No Workspaces Yet</h3>
+
+                    <p>
+
+                        Create your first workspace to organize your ideas,
+                        collaborate in the future and keep every project in one place.
+
+                    </p>
+
+                    <button class="primary-btn" id="emptyCreateBtn">
+
+                        <i class="fa-solid fa-folder-plus"></i>
+
+                        Create Workspace
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================= -->
+        <!-- Future Collaboration -->
+        <!-- ========================= -->
+
+        <section class="future-collaboration">
+
+            <div class="future-content">
+
+                <div class="future-icon">
+
+                    <i class="fa-solid fa-user-group"></i>
+
+                </div>
+
+                <div class="future-text">
+
+                    <h2>
+                        Ready for Team Collaboration?
+                    </h2>
+
+                    <p>
+
+                        IdeaSphere currently lets you organize your workspaces
+                        locally on your device.
+
+                        In upcoming versions, authentication and cloud sync
+                        will unlock:
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="feature-grid">
+
+               <div class="feature-card" id="inviteMembersCard">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    <h4>Invite Members</h4>
+
+                    <p>
+                        Collaborate with teammates inside your workspace.
+                    </p>
+
+                </div>
+
+                <div class="feature-card" id="workspaceDiscussionCard">
+
+                    <i class="fa-solid fa-comments"></i>
+
+                    <h4>Workspace Discussions</h4>
+
+                    <p>
+                        Chat and discuss ideas without leaving IdeaSphere.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card" id="cloudSyncCard">
+
+    <i class="fa-solid fa-cloud"></i>
+
+    <h4>Cloud Sync</h4>
+
+    <p>
+        Sync your workspace data seamlessly across devices with secure cloud storage.
+    </p>
+
+</div>
+
+            </div>
+
+        </section>
+                <!-- ===================================== -->
+        <!-- Create / Edit Workspace Modal -->
+        <!-- ===================================== -->
+
+        <div class="modal-overlay" id="workspaceModal">
+
+            <div class="workspace-modal">
+
+                <div class="modal-header">
+
+                    <h2 id="modalTitle">
+                        Create Workspace
+                    </h2>
+
+                    <button class="close-modal" id="closeModal">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+                </div>
+
+                <form id="workspaceForm">
+
+                    <div class="form-group">
+
+                        <label>
+                            Workspace Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="workspaceName"
+                            placeholder="Enter workspace name..."
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Description
+                        </label>
+
+                        <textarea
+                            id="workspaceDescription"
+                            rows="4"
+                            placeholder="Describe your workspace..."
+                        ></textarea>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label>
+                                Category
+                            </label>
+
+                            <select id="workspaceCategory">
+
+                                <option>Technology</option>
+                                <option>Healthcare</option>
+                                <option>Education</option>
+                                <option>Finance</option>
+                                <option>E-Commerce</option>
+                                <option>AI / ML</option>
+                                <option>Environment</option>
+                                <option>Other</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+                                Status
+                            </label>
+
+                            <select id="workspaceStatus">
+
+                                <option value="active">
+                                    Active
+                                </option>
+
+                                <option value="completed">
+                                    Completed
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Members (Optional)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="workspaceMembers"
+                            min="0"
+                            value="1"
+                        >
+
+                    </div>
+
+                    <div class="modal-actions">
+
+                        <button
+                            type="button"
+                            class="cancel-btn"
+                            id="cancelModal"
+                        >
+
+                            Cancel
+
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="save-btn"
+                            id="saveWorkspace"
+                        >
+
+                            <i class="fa-solid fa-check"></i>
+
+                            Save Workspace
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================== -->
+        <!-- Toast Notification -->
+        <!-- ===================================== -->
+        <!-- ======================================================
+                    CLOUD SYNC MODAL
+====================================================== -->
+
+<div class="cloud-overlay" id="cloudOverlay">
+
+    <div class="cloud-modal">
+
+        <!-- Header -->
+
+        <div class="cloud-header">
+
+            <div>
+
+                <h2>
+                    <i class="fa-solid fa-cloud"></i>
+                    Cloud Sync
+                </h2>
+
+                <p>
+                    Keep your workspace data backed up securely.
+                </p>
+
+            </div>
+
+            <button
+                class="cloud-close"
+                id="closeCloudSync">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <!-- Status -->
+
+        <div class="cloud-status">
+
+            <div class="status-card">
+
+                <span>Status</span>
+
+                <strong id="cloudStatus">
+
+                    Ready to Sync
+
+                </strong>
+
+            </div>
+
+            <div class="status-card">
+
+                <span>Last Sync</span>
+
+                <strong id="lastSyncTime">
+
+                    Never
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <!-- Features -->
+
+        <div class="cloud-features">
+
+            <div class="cloud-feature">
+
+                <i class="fa-solid fa-lock"></i>
+
+                Secure Backup
+
+            </div>
+
+            <div class="cloud-feature">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                Fast Sync
+
+            </div>
+
+            <div class="cloud-feature">
+
+                <i class="fa-solid fa-laptop"></i>
+
+                Multi Device Ready
+
+            </div>
+
+            <div class="cloud-feature">
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Easy Recovery
+
+            </div>
+
+        </div>
+
+        <!-- Progress -->
+
+        <div class="sync-progress">
+
+            <div
+                class="sync-progress-bar"
+                id="syncProgressBar">
+
+            </div>
+
+        </div>
+
+        <div
+            class="sync-percentage"
+            id="syncPercentage">
+
+            0%
+
+        </div>
+
+        <!-- Button -->
+
+        <button
+            class="sync-btn"
+            id="syncNowBtn">
+
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+            Sync Now
+
+        </button>
+
+    </div>
+
+</div>
+        <div id="toastContainer" class="toast-container">
+
+            <!-- Toasts generated dynamically -->
+
+        </div>
+
+    </main>
+
+    <!-- ===================================== -->
+    <!-- JavaScript -->
+    <!-- ===================================== -->
+
+    
+    <!-- ======================================================
+            Invite Members Panel
+====================================================== -->
+
+<div class="invite-overlay" id="inviteOverlay">
+
+    <div class="invite-panel">
+
+        <!-- Header -->
+
+        <div class="invite-header">
+
+            <div>
+
+                <h2>
+                    Invite Members
+                </h2>
+
+                <p id="inviteWorkspaceName">
+
+                    AI Study Buddy
+
+                </p>
+
+            </div>
+
+            <button
+                id="closeInvitePanel"
+                class="invite-close">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <!-- Intro -->
+
+        <div class="invite-intro">
+
+            Invite teammates to collaborate on this workspace.
+
+        </div>
+
+        <!-- ============================= -->
+        <!-- Invite Form -->
+        <!-- ============================= -->
+
+        <form id="inviteForm">
+
+            <!-- Email -->
+
+            <div class="invite-group">
+
+                <label>
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    Email Address
+
+                </label>
+
+                <input
+
+                    type="email"
+
+                    id="inviteEmail"
+
+                    placeholder="teammate@gmail.com"
+
+                    required
+
+                >
+
+            </div>
+
+            <!-- Role -->
+
+            <div class="invite-group">
+
+                <label>
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    Role
+
+                </label>
+
+                <select id="inviteRole">
+
+                    <option value="Viewer">
+
+                        👀 Viewer
+
+                    </option>
+
+                    <option value="Editor" selected>
+
+                        ✏️ Editor
+
+                    </option>
+
+                    <option value="Admin">
+
+                        ⭐ Admin
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Message -->
+
+            <div class="invite-group">
+
+                <label>
+
+                    <i class="fa-solid fa-comment-dots"></i>
+
+                    Personal Message
+
+                </label>
+
+                <textarea
+
+                    id="inviteMessage"
+
+                    rows="4"
+
+                    placeholder="Hey! I'd love to collaborate with you on this project."
+
+                ></textarea>
+
+            </div>
+
+            <!-- Send -->
+
+            <button
+                class="send-invite-btn"
+                type="submit">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Send Invitation
+
+            </button>
+
+        </form>
+
+        <!-- ================================= -->
+        <!-- Invite Link -->
+        <!-- ================================= -->
+
+        <section class="invite-link-section">
+
+            <h3>
+
+                <i class="fa-solid fa-link"></i>
+
+                Invite Link
+
+            </h3>
+
+            <div class="invite-link-box">
+
+                <input
+
+                    id="inviteLink"
+
+                    readonly
+
+                    value="https://ideasphere.app/invite/AB72KD"
+
+                >
+
+                <button id="copyInviteLink">
+
+                    <i class="fa-regular fa-copy"></i>
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ================================= -->
+        <!-- Pending Invitations -->
+        <!-- ================================= -->
+
+        <section class="pending-section">
+
+            <div class="section-title">
+
+                <i class="fa-solid fa-clock"></i>
+
+                Pending Invitations
+
+            </div>
+
+            <div id="pendingInviteList">
+
+                <div class="empty-invite">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    <h4>
+
+                        No Invitations Yet
+
+                    </h4>
+
+                    <p>
+
+                        Invite teammates to start collaborating together.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================================= -->
+        <!-- Team Members -->
+        <!-- ================================= -->
+
+        <section class="member-section">
+
+            <div class="section-title">
+
+                <i class="fa-solid fa-users"></i>
+
+                Team Members
+
+            </div>
+
+            <div id="memberList">
+
+                <div class="empty-invite">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <h4>
+
+                        No Members Yet
+
+                    </h4>
+
+                    <p>
+
+                        Invitations accepted by teammates will appear here.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<script src="sidebar.js"></script>
+<script src="collaborate.js"></script>
+</body>
+
+</html>

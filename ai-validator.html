@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>IdeaSphere AI | Validate Idea</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="ai-validator.css">
+
+</head>
+
+<body data-page="validator">
+
+<div class="dashboard">
+
+<!-- ==========================================
+            IDEASPHERE SIDEBAR
+========================================== -->
+
+<aside class="sidebar">
+
+    <!-- =========================
+            LOGO
+    ========================== -->
+
+    <div class="logo-section">
+
+        <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+             alt="IdeaSphere Logo"
+             class="logo">
+
+        <h2>IdeaSphere</h2>
+
+    </div>
+
+
+    <!-- =========================
+            NAVIGATION
+    ========================== -->
+
+    <nav>
+
+        <ul>
+
+            <li data-page="home"
+                onclick="location.href='home.html'">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Home</span>
+
+            </li>
+
+
+            <li data-page="explore"
+                onclick="location.href='explore-ideas.html'">
+
+                <i class="fa-solid fa-compass"></i>
+
+                <span>Explore Ideas</span>
+
+            </li>
+
+
+            <li data-page="validator"
+                onclick="location.href='ai-validator.html'">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <span>AI Validator</span>
+
+            </li>
+
+
+            <li data-page="create"
+                onclick="location.href='create-idea.html'">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>Create Idea</span>
+
+            </li>
+
+
+            <li data-page="saved"
+                onclick="location.href='saved-ideas.html'">
+
+                <i class="fa-solid fa-bookmark"></i>
+
+                <span>Saved Ideas</span>
+
+            </li>
+
+
+            <li data-page="analytics"
+                onclick="location.href='analytics.html'">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Analytics</span>
+
+            </li>
+
+
+            <li data-page="collaboration"
+                onclick="location.href='collaborate.html'">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>Collaboration</span>
+
+            </li>
+
+
+            <li data-page="workspace"
+                onclick="location.href='workspace.html'">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <span>Workspace</span>
+
+            </li>
+
+
+            <li data-page="settings"
+                onclick="location.href='settings.html'">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+            LOGOUT
+    ========================== -->
+
+    <button class="logout-btn" id="logoutBtn">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </button>
+
+</aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <div class="container">
+
+
+            <!-- ================= TOP BAR ================= -->
+
+            <div class="top-bar">
+
+                <button id="backBtn" class="back-btn">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    <span id="backBtnText">
+                        Back to Dashboard
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- ================= HERO ================= -->
+
+            <section class="hero">
+
+                <h1>
+
+                    ✨ IdeaSphere AI
+
+                </h1>
+
+                <p>
+
+                    Smart insights for smarter innovation.
+
+                </p>
+
+            </section>
+
+
+            <!-- ==========================================
+                    IDEA SELECTOR
+            ========================================== -->
+
+            <section
+                class="idea-selector"
+                id="ideaSelector">
+
+                <div class="selector-heading">
+
+                    <div>
+
+                        <h2>
+
+                            Select an Idea to Validate
+
+                        </h2>
+
+                        <p>
+
+                            Choose one of your ideas and let
+                            IdeaSphere AI analyze its potential.
+
+                        </p>
+
+                    </div>
+
+                    <div class="selector-icon">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="idea-selection-grid"
+                    id="ideaSelectionGrid">
+
+                    <!-- Ideas added using JavaScript -->
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================================
+                    AI ANALYSIS CONTENT
+            ========================================== -->
+
+            <div
+                class="analysis-content"
+                id="analysisContent">
+
+
+                <!-- ================= PROJECT ================= -->
+
+                <section class="project-card">
+
+                    <div>
+
+                        <span class="project-label">
+
+                            Analyzing Idea
+
+                        </span>
+
+                        <h2 id="ideaTitle">
+
+                            Loading Project...
+
+                        </h2>
+
+                        <p id="ideaCategory">
+
+                            Category
+
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="changeIdeaBtn"
+                        class="change-idea-btn">
+
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+                        Change Idea
+
+                    </button>
+
+                </section>
+
+
+                <!-- ================= OVERALL SCORE ================= -->
+
+                <section class="overall-score">
+
+                    <h2>
+
+                        Overall AI Score
+
+                    </h2>
+
+                    <div class="score-circle">
+
+                        <span id="overallScore">
+
+                            0%
+
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ================= ANALYSIS ================= -->
+
+                <section class="analysis-grid">
+
+
+                    <div class="analysis-card">
+
+                        <h3>
+
+                            💡 Innovation
+
+                        </h3>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar innovation">
+
+                            </div>
+
+                        </div>
+
+                        <span id="innovationScore">
+
+                            0%
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="analysis-card">
+
+                        <h3>
+
+                            📈 Market Demand
+
+                        </h3>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar market">
+
+                            </div>
+
+                        </div>
+
+                        <span id="marketScore">
+
+                            0%
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="analysis-card">
+
+                        <h3>
+
+                            ⚙ Feasibility
+
+                        </h3>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar feasibility">
+
+                            </div>
+
+                        </div>
+
+                        <span id="feasibilityScore">
+
+                            0%
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="analysis-card">
+
+                        <h3>
+
+                            💰 Revenue Potential
+
+                        </h3>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar revenue">
+
+                            </div>
+
+                        </div>
+
+                        <span id="revenueScore">
+
+                            0%
+
+                        </span>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- ================= SWOT ANALYSIS ================= -->
+
+                <section class="swot-card">
+
+                    <h2>
+
+                        SWOT Analysis
+
+                    </h2>
+
+
+                    <div class="swot-grid">
+
+
+                        <div class="swot-box">
+
+                            <h3>
+
+                                ✅ Strengths
+
+                            </h3>
+
+                            <ul id="strengths"></ul>
+
+                        </div>
+
+
+                        <div class="swot-box">
+
+                            <h3>
+
+                                ⚠ Weaknesses
+
+                            </h3>
+
+                            <ul id="weaknesses"></ul>
+
+                        </div>
+
+
+                        <div class="swot-box">
+
+                            <h3>
+
+                                🚀 Opportunities
+
+                            </h3>
+
+                            <ul id="opportunities"></ul>
+
+                        </div>
+
+
+                        <div class="swot-box">
+
+                            <h3>
+
+                                🛡 Threats
+
+                            </h3>
+
+                            <ul id="threats"></ul>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- ================= AI SUGGESTIONS ================= -->
+
+                <section class="suggestions-card">
+
+                    <h2>
+
+                        🤖 AI Suggestions
+
+                    </h2>
+
+                    <ul id="suggestions"></ul>
+
+                </section>
+
+
+                <!-- ================= ACTION BUTTONS ================= -->
+
+                <section class="buttons">
+
+                    <button id="downloadBtn">
+
+                        <i class="fa-solid fa-download"></i>
+
+                        Download Report
+
+                    </button>
+
+
+                    <button id="dashboardBtn">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        Back to Dashboard
+
+                    </button>
+
+                </section>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- jsPDF Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- IdeaSphere AI Validator -->
+<script src="sidebar.js"></script>
+<script src="ai-validator.js"></script>
+
+</body>
+
+</html>

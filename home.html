@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IdeaSphere | Dashboard</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="home.css">
+
+</head>
+
+<body data-page="home">
+
+<div class="dashboard">
+
+    <!-- ==========================================
+                IDEASPHERE SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+        <!-- Logo -->
+
+        <div class="logo-section">
+
+            <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+                 alt="IdeaSphere Logo"
+                 class="logo">
+
+            <h2>IdeaSphere</h2>
+
+        </div>
+
+        <!-- Navigation -->
+
+        <nav>
+
+            <ul>
+
+                <li data-page="home" onclick="location.href='home.html'">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </li>
+
+                <li data-page="explore" onclick="location.href='explore-ideas.html'">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>Explore Ideas</span>
+                </li>
+
+                <li data-page="validator" onclick="location.href='ai-validator.html'">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Validator</span>
+                </li>
+
+                <li data-page="create" onclick="location.href='create-idea.html'">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Create Idea</span>
+                </li>
+
+                <li data-page="saved" onclick="location.href='saved-ideas.html'">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span>Saved Ideas</span>
+                </li>
+
+                <li data-page="analytics" onclick="location.href='analytics.html'">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Analytics</span>
+                </li>
+
+                <li data-page="collaboration" onclick="location.href='collaborate.html'">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Collaboration</span>
+                </li>
+
+                <li data-page="workspace" onclick="location.href='workspace.html'">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Workspace</span>
+                </li>
+
+                <li data-page="settings" onclick="location.href='settings.html'">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <button class="logout-btn" id="logoutBtn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </button>
+
+    </aside>
+
+    <!-- ==========================================
+                    MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+        <!-- Top Bar -->
+
+        <div class="topbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" placeholder="Search ideas...">
+
+            </div>
+
+            <div class="top-icons">
+
+    <div class="profile-avatar" id="profileBtn">
+        K
+    </div>
+
+</div>
+
+        </div>
+
+        <!-- Welcome Card -->
+
+        <div class="welcome-card">
+
+            <div>
+
+                <h1 id="welcomeMessage">Welcome Back, Keerthana 👋</h1>
+
+                <p>
+                    Ready to build your next million-dollar idea today?
+                </p>
+
+                <button id="createIdeaBtn">
+                    + Create New Idea
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Dashboard Cards -->
+
+        <div class="cards">
+
+            <div class="card" id="trendingIdeasCard">
+
+                <i class="fa-solid fa-fire"></i>
+
+                <h3>Trending Ideas</h3>
+
+                <p>
+                    Explore startup ideas that are gaining traction.
+                </p>
+
+            </div>
+
+            <div class="card" id="aiValidatorCard">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <h3>AI Validator</h3>
+
+                <p>
+                    Analyze your idea with IdeaSphere AI and get smart insights.
+                </p>
+
+            </div>
+
+            <div class="card" id="communityCard">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h3>Community</h3>
+
+                <p>
+                    Collaborate with innovators from around the world.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Recent Ideas -->
+
+        <div class="recent-section">
+
+            <h2>Recent Ideas</h2>
+
+            <div id="ideasContainer"></div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="sidebar.js"></script>
+<script src="js/api.js"></script>
+<script src="home.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Explore Ideas | IdeaSphere</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="explore-ideas.css">
+
+</head>
+
+<body data-page="explore">
+
+<div class="dashboard">
+
+    <!-- ==========================================
+            IDEASPHERE SIDEBAR
+========================================== -->
+
+<aside class="sidebar">
+
+    <!-- =========================
+            LOGO
+    ========================== -->
+
+    <div class="logo-section">
+
+        <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+             alt="IdeaSphere Logo"
+             class="logo">
+
+        <h2>IdeaSphere</h2>
+
+    </div>
+
+
+    <!-- =========================
+            NAVIGATION
+    ========================== -->
+
+    <nav>
+
+        <ul>
+
+            <li data-page="home"
+                onclick="location.href='home.html'">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Home</span>
+
+            </li>
+
+
+            <li data-page="explore"
+                onclick="location.href='explore-ideas.html'">
+
+                <i class="fa-solid fa-compass"></i>
+
+                <span>Explore Ideas</span>
+
+            </li>
+
+
+            <li data-page="validator"
+                onclick="location.href='ai-validator.html'">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <span>AI Validator</span>
+
+            </li>
+
+
+            <li data-page="create"
+                onclick="location.href='create-idea.html'">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>Create Idea</span>
+
+            </li>
+
+
+            <li data-page="saved"
+                onclick="location.href='saved-ideas.html'">
+
+                <i class="fa-solid fa-bookmark"></i>
+
+                <span>Saved Ideas</span>
+
+            </li>
+
+
+            <li data-page="analytics"
+                onclick="location.href='analytics.html'">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Analytics</span>
+
+            </li>
+
+
+            <li data-page="collaboration"
+                onclick="location.href='collaborate.html'">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>Collaboration</span>
+
+            </li>
+
+
+            <li data-page="workspace"
+                onclick="location.href='workspace.html'">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <span>Workspace</span>
+
+            </li>
+
+
+            <li data-page="settings"
+                onclick="location.href='settings.html'">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+            LOGOUT
+    ========================== -->
+
+    <button class="logout-btn" id="logoutBtn">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </button>
+
+</aside>
+
+    <!-- ==================================================
+                        MAIN CONTENT
+    ================================================== -->
+
+    <main class="main-content">
+
+        <!-- ==================================================
+                            HERO
+        ================================================== -->
+
+        <section class="explore-hero">
+
+            <div class="hero-orb orb-one"></div>
+
+            <div class="hero-orb orb-two"></div>
+
+            <div class="hero-content">
+
+                <div class="hero-label">
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    IDEA DISCOVERY
+
+                </div>
+
+                <h1>
+
+                    Discover Ideas.
+
+                    <span>Spark Possibilities.</span>
+
+                </h1>
+
+                <p>
+
+                    Explore innovative concepts, discover emerging
+                    opportunities, and connect with ideas worth building.
+
+                </p>
+
+                <div class="hero-stats">
+
+                    <div>
+
+                        <strong id="ideaCount">0</strong>
+
+                        <span>Ideas</span>
+
+                    </div>
+
+                    <div>
+
+                        <strong>8</strong>
+
+                        <span>Industries</span>
+
+                    </div>
+
+                    <div>
+
+                        <strong>∞</strong>
+
+                        <span>Possibilities</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hero-visual">
+
+                <div class="idea-orbit">
+
+                    <div class="orbit-ring ring-one"></div>
+
+                    <div class="orbit-ring ring-two"></div>
+
+                    <div class="orbit-ring ring-three"></div>
+
+                    <div class="central-bulb">
+
+                        <i class="fa-solid fa-lightbulb"></i>
+
+                    </div>
+
+                    <div class="orbit-icon orbit-ai">
+
+                        <i class="fa-solid fa-robot"></i>
+
+                    </div>
+
+                    <div class="orbit-icon orbit-rocket">
+
+                        <i class="fa-solid fa-rocket"></i>
+
+                    </div>
+
+                    <div class="orbit-icon orbit-heart">
+
+                        <i class="fa-solid fa-heart"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+                        DISCOVERY CONTROLS
+        ================================================== -->
+
+        <section class="discovery-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">DISCOVER</span>
+
+                    <h2>Ideas worth exploring</h2>
+
+                    <p>
+
+                        Find concepts that match your curiosity.
+
+                    </p>
+
+                </div>
+
+                <div class="result-count">
+
+                    <span id="visibleCount">0</span>
+
+                    ideas found
+
+                </div>
+
+            </div>
+
+            <!-- SEARCH AND FILTERS -->
+
+            <div class="discovery-controls">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search ideas, problems or industries...">
+
+                    <button
+                        id="clearSearch"
+                        class="clear-search"
+                        aria-label="Clear search">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+                </div>
+
+                <div class="filter-group">
+
+                    <div class="select-wrapper">
+
+                        <i class="fa-solid fa-layer-group"></i>
+
+                        <select id="stageFilter">
+
+                            <option value="All">
+                                All Stages
+                            </option>
+
+                            <option value="Concept">
+                                Concept
+                            </option>
+
+                            <option value="Idea">
+                                Idea
+                            </option>
+
+                            <option value="Prototype">
+                                Prototype
+                            </option>
+
+                            <option value="MVP">
+                                MVP
+                            </option>
+
+                        </select>
+
+                        <i class="fa-solid fa-chevron-down select-arrow"></i>
+
+                    </div>
+
+                    <div class="select-wrapper">
+
+                        <i class="fa-solid fa-arrow-down-wide-short"></i>
+
+                        <select id="sortFilter">
+
+                            <option value="trending">
+                                Trending
+                            </option>
+
+                            <option value="popular">
+                                Most Popular
+                            </option>
+
+                            <option value="newest">
+                                Newest
+                            </option>
+
+                            <option value="az">
+                                A - Z
+                            </option>
+
+                        </select>
+
+                        <i class="fa-solid fa-chevron-down select-arrow"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ==================================================
+                            CATEGORY CHIPS
+            ================================================== -->
+
+            <div class="category-scroll">
+
+                <button
+                    class="category-chip active"
+                    data-category="All">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    Trending
+
+                </button>
+
+                <button
+                    class="category-chip"
+                    data-category="AI">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    AI
+
+                </button>
+
+                <button
+                    class="category-chip"
+                    data-category="E-Commerce">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    E-Commerce
+
+                </button>
+
+                <button
+                    class="category-chip"
+                    data-category="Sustainability">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    Sustainability
+
+                </button>
+
+                <button
+                    class="category-chip"
+                    data-category="Health">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                    Health
+
+                </button>
+
+                <button
+                    class="category-chip"
+                    data-category="Education">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    Education
+
+                </button>
+
+                <button
+                    class="category-chip"
+                    data-category="Travel">
+
+                    <i class="fa-solid fa-plane"></i>
+
+                    Travel
+
+                </button>
+
+                <button
+                    class="category-chip"
+                    data-category="Food">
+
+                    <i class="fa-solid fa-utensils"></i>
+
+                    Food
+
+                </button>
+
+            </div>
+
+            <!-- ==================================================
+                            IDEA GRID
+            ================================================== -->
+
+            <div
+                class="ideas-grid"
+                id="ideasGrid">
+
+            </div>
+
+            <!-- ==================================================
+                            EMPTY STATE
+            ================================================== -->
+
+            <div
+                class="empty-state"
+                id="emptyState">
+
+                <div class="empty-icon">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </div>
+
+                <h3>No matching ideas found</h3>
+
+                <p>
+
+                    Try changing your search or exploring another category.
+
+                </p>
+
+                <button id="resetFiltersBtn">
+
+                    Reset Filters
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ==================================================
+                    IDEA PREVIEW OVERLAY
+================================================== -->
+
+<div
+    class="preview-overlay"
+    id="previewOverlay">
+
+    <div
+        class="preview-backdrop"
+        id="previewBackdrop">
+
+    </div>
+
+    <aside class="preview-panel">
+
+        <button
+            class="close-preview"
+            id="closePreview"
+            aria-label="Close idea preview">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <div class="preview-scroll">
+
+            <div class="preview-top">
+
+                <div
+                    class="preview-icon"
+                    id="previewIcon">
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                </div>
+
+                <div>
+
+                    <span
+                        class="preview-category"
+                        id="previewCategory">
+
+                        Category
+
+                    </span>
+
+                    <h2 id="previewTitle">
+
+                        Idea Title
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <div class="preview-meta">
+
+                <div>
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    <span id="previewViews">0</span>
+
+                    Views
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-heart"></i>
+
+                    <span id="previewLikes">0</span>
+
+                    Likes
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                    <span id="previewStage">Concept</span>
+
+                </div>
+
+            </div>
+
+            <div class="preview-section">
+
+                <div class="preview-section-title">
+
+                    <span>01</span>
+
+                    <h3>Problem</h3>
+
+                </div>
+
+                <p id="previewProblem"></p>
+
+            </div>
+
+            <div class="preview-section">
+
+                <div class="preview-section-title">
+
+                    <span>02</span>
+
+                    <h3>Solution</h3>
+
+                </div>
+
+                <p id="previewSolution"></p>
+
+            </div>
+
+            <div class="preview-section">
+
+                <div class="preview-section-title">
+
+                    <span>03</span>
+
+                    <h3>Target Audience</h3>
+
+                </div>
+
+                <p id="previewAudience"></p>
+
+            </div>
+
+            <div class="preview-tags">
+
+                <span id="previewTagOne"></span>
+
+                <span id="previewTagTwo"></span>
+
+            </div>
+
+            <div class="preview-actions">
+
+                <button
+                    class="preview-save-btn"
+                    id="previewSaveBtn">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                    Save Idea
+
+                </button>
+
+                <button class="collaborate-btn">
+
+                    <i class="fa-solid fa-user-group"></i>
+
+                    Collaborate
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- ==================================================
+                        TOAST
+================================================== -->
+
+<div
+    class="toast"
+    id="toast">
+
+    <div class="toast-icon">
+
+        <i class="fa-solid fa-heart"></i>
+
+    </div>
+
+    <div>
+
+        <strong id="toastTitle">
+            Idea Saved
+        </strong>
+
+        <p id="toastMessage">
+            Added to your saved ideas.
+        </p>
+
+    </div>
+
+</div>
+
+<script src="sidebar.js"></script>
+<script src="explore-ideas.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IdeaSphere | Workspace</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="workspace.css">
+
+</head>
+
+<body data-page="workspace">
+
+    <!-- ==========================================
+            IDEASPHERE SIDEBAR
+========================================== -->
+
+<aside class="sidebar">
+
+    <!-- =========================
+            LOGO
+    ========================== -->
+
+    <div class="logo-section">
+
+        <img src="https://i.pinimg.com/736x/d0/1d/dc/d01ddc54e98c24d8595f9ec9f7c2d7c7.jpg"
+             alt="IdeaSphere Logo"
+             class="logo">
+
+        <h2>IdeaSphere</h2>
+
+    </div>
+
+
+    <!-- =========================
+            NAVIGATION
+    ========================== -->
+
+    <nav>
+
+        <ul>
+
+            <li data-page="home"
+                onclick="location.href='home.html'">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Home</span>
+
+            </li>
+
+
+            <li data-page="explore"
+                onclick="location.href='explore-ideas.html'">
+
+                <i class="fa-solid fa-compass"></i>
+
+                <span>Explore Ideas</span>
+
+            </li>
+
+
+            <li data-page="validator"
+                onclick="location.href='ai-validator.html'">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <span>AI Validator</span>
+
+            </li>
+
+
+            <li data-page="create"
+                onclick="location.href='create-idea.html'">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>Create Idea</span>
+
+            </li>
+
+
+            <li data-page="saved"
+                onclick="location.href='saved-ideas.html'">
+
+                <i class="fa-solid fa-bookmark"></i>
+
+                <span>Saved Ideas</span>
+
+            </li>
+
+
+            <li data-page="analytics"
+                onclick="location.href='analytics.html'">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Analytics</span>
+
+            </li>
+
+
+            <li data-page="collaboration"
+                onclick="location.href='collaborate.html'">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>Collaboration</span>
+
+            </li>
+
+
+            <li data-page="workspace"
+                onclick="location.href='workspace.html'">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <span>Workspace</span>
+
+            </li>
+
+
+            <li data-page="settings"
+                onclick="location.href='settings.html'">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+            LOGOUT
+    ========================== -->
+
+    <button class="logout-btn" id="logoutBtn">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </button>
+
+</aside>
+
+    <!-- ==========================================
+                MAIN CONTENT
+    =========================================== -->
+
+    <main class="main">
+
+        <!-- ======================================
+                    TOP BAR
+        ======================================= -->
+
+        <div class="topbar">
+
+            <div class="breadcrumb">
+
+                <span>Collaboration</span>
+
+                <i class="fa-solid fa-angle-right"></i>
+
+                <span id="workspaceBreadcrumb">Workspace</span>
+
+            </div>
+
+            <div class="top-right">
+
+                <button class="icon-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                </button>
+
+                <button class="icon-btn">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                </button>
+
+                <div class="profile-card">
+
+                    <div class="profile-avatar">
+
+                        K
+
+                    </div>
+
+                    <div>
+
+                        <h4>Keerthana</h4>
+
+                        <span>Workspace Owner</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ======================================
+                WORKSPACE HEADER
+        ======================================= -->
+
+        <section class="workspace-header">
+
+            <div class="workspace-left">
+
+                <div class="workspace-icon">
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                </div>
+
+                <div>
+
+                    <span class="workspace-category"
+                        id="workspaceCategory">
+
+                        Technology
+
+                    </span>
+
+                    <h1 id="workspaceTitle">
+
+                        Workspace
+
+                    </h1>
+
+                    <p id="workspaceDescription">
+
+                        Organize your ideas, collaborate with your team,
+                        and build your project together.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="workspace-info">
+
+                <div class="info-card">
+
+                    <span>Status</span>
+
+                    <h3>
+
+                        <span class="status-dot"></span>
+
+                        Active
+
+                    </h3>
+
+                </div>
+
+                <div class="info-card">
+
+                    <span>Members</span>
+
+                    <h3 id="memberCount">
+
+                        1
+
+                    </h3>
+
+                </div>
+
+                <div class="info-card">
+
+                    <span>Created</span>
+
+                    <h3 id="createdDate">
+
+                        --
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </section>
+                <!-- ======================================
+                QUICK ACTIONS
+        ======================================= -->
+
+        <section class="quick-actions">
+
+            <button id="inviteMemberBtn" class="action-btn">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Invite Member
+
+            </button>
+
+            <button id="newTaskBtn" class="action-btn primary">
+
+                <i class="fa-solid fa-list-check"></i>
+
+                New Task
+
+            </button>
+
+            <button id="uploadFileBtn" class="action-btn">
+
+                <i class="fa-solid fa-upload"></i>
+
+                Upload File
+
+            </button>
+
+            <button id="addNoteBtn" class="action-btn">
+
+                <i class="fa-solid fa-note-sticky"></i>
+
+                Add Note
+
+            </button>
+
+        </section>
+
+
+
+        <!-- ======================================
+                    WORKSPACE TABS
+        ======================================= -->
+
+        <section class="workspace-tabs">
+
+            <button class="tab-btn active"
+                    data-tab="overview">
+
+                Overview
+
+            </button>
+
+            <button class="tab-btn"
+                    data-tab="tasks">
+
+                Tasks
+
+            </button>
+
+            <button class="tab-btn"
+                    data-tab="files">
+
+                Files
+
+            </button>
+
+            <button class="tab-btn"
+                    data-tab="notes">
+
+                Notes
+
+            </button>
+
+            <button class="tab-btn" data-tab="discussion">
+    Discussion
+</button>
+
+            <button class="tab-btn"
+                    data-tab="activity">
+
+                Activity
+
+            </button>
+
+        </section>
+
+
+
+        <!-- ======================================
+                    OVERVIEW
+        ======================================= -->
+
+        <section id="overview" class="tab-content active-tab">
+
+            <div class="overview-grid">
+
+                <!-- Workspace Details -->
+
+                <div class="content-card">
+
+                    <div class="card-header">
+
+                        <h3>
+
+                            Workspace Details
+
+                        </h3>
+
+                    </div>
+
+                    <div class="workspace-details">
+
+                        <div class="detail-row">
+
+                            <span>Category</span>
+
+                            <strong id="workspaceCategoryText">
+
+                                Technology
+
+                            </strong>
+
+                        </div>
+
+                        <div class="detail-row">
+
+                            <span>Status</span>
+
+                            <strong>
+
+                                Active
+
+                            </strong>
+
+                        </div>
+
+                        <div class="detail-row">
+
+                            <span>Created</span>
+
+                            <strong id="workspaceCreated">
+
+                                --
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Progress -->
+
+                <div class="content-card">
+
+                    <div class="card-header">
+
+                        <h3>
+
+                            Progress
+
+                        </h3>
+
+                    </div>
+
+                    <div class="progress-box">
+
+                        <h2 id="progressPercent">
+
+                            0%
+
+                        </h2>
+
+                        <div class="progress-bar">
+
+                            <div id="progressFill"></div>
+
+                        </div>
+
+                        <small>
+
+                            Based on completed tasks
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Members -->
+
+                <div class="content-card">
+
+                    <div class="card-header">
+
+                        <h3>
+
+                            Team Members
+
+                        </h3>
+
+                    </div>
+
+                    <div id="membersContainer">
+
+                        <div class="empty-box">
+
+                            No members yet.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Recent Activity -->
+
+                <div class="content-card">
+
+                    <div class="card-header">
+
+                        <h3>
+
+                            Recent Activity
+
+                        </h3>
+
+                    </div>
+
+                    <div id="activityPreview">
+
+                        <div class="empty-box">
+
+                            No activity yet.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+                <!-- ======================================
+                    TASKS
+        ======================================= -->
+
+        <section id="tasks" class="tab-content">
+
+            <div class="tasks-header">
+
+                <div>
+
+                    <h2>Task Board</h2>
+
+                    <p>Manage your workspace tasks efficiently.</p>
+
+                </div>
+
+                <button id="createTaskBtn" class="action-btn primary">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Create Task
+
+                </button>
+
+            </div>
+
+
+            <div class="kanban-board">
+
+                <!-- ================= TO DO ================= -->
+
+                <div class="kanban-column">
+
+                    <div class="column-header">
+
+                        <h3>
+
+                            <i class="fa-regular fa-circle"></i>
+
+                            To Do
+
+                        </h3>
+
+                        <span id="todoCount">0</span>
+
+                    </div>
+
+                    <div id="todoTasks" class="task-list">
+
+                        <div class="empty-box">
+
+                            No pending tasks.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= IN PROGRESS ================= -->
+
+                <div class="kanban-column">
+
+                    <div class="column-header">
+
+                        <h3>
+
+                            <i class="fa-solid fa-spinner"></i>
+
+                            In Progress
+
+                        </h3>
+
+                        <span id="progressCount">0</span>
+
+                    </div>
+
+                    <div id="progressTasks" class="task-list">
+
+                        <div class="empty-box">
+
+                            Nothing in progress.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= COMPLETED ================= -->
+
+                <div class="kanban-column">
+
+                    <div class="column-header">
+
+                        <h3>
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Completed
+
+                        </h3>
+
+                        <span id="completedCount">0</span>
+
+                    </div>
+
+                    <div id="completedTasks" class="task-list">
+
+                        <div class="empty-box">
+
+                            No completed tasks.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+                <!-- ======================================
+                    FILES
+        ======================================= -->
+
+        <section id="files" class="tab-content">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Workspace Files</h2>
+
+                    <p>Store and organize all your project files.</p>
+
+                </div>
+
+                <button id="uploadNewFileBtn" class="action-btn primary">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    Upload File
+
+                </button>
+
+            </div>
+
+            <div id="filesContainer" class="files-grid">
+
+                <div class="empty-box">
+
+                    <i class="fa-regular fa-folder-open"></i>
+
+                    <h3>No Files Uploaded</h3>
+
+                    <p>Upload your first project file to get started.</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+                    NOTES
+        ======================================= -->
+
+        <section id="notes" class="tab-content">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Workspace Notes</h2>
+
+                    <p>Capture ideas, meeting points and reminders.</p>
+
+                </div>
+
+                <button id="createNoteBtn" class="action-btn primary">
+
+                    <i class="fa-solid fa-note-sticky"></i>
+
+                    New Note
+
+                </button>
+
+            </div>
+
+            <div id="notesContainer" class="notes-grid">
+
+                <div class="empty-box">
+
+                    <i class="fa-regular fa-note-sticky"></i>
+
+                    <h3>No Notes Yet</h3>
+
+                    <p>Create your first workspace note.</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================
+                    DISCUSSION
+        ======================================= -->
+        <section class="tab-content" id="discussion">
+
+    <div class="discussion-header">
+
+        <h2>
+            <i class="fa-solid fa-comments"></i>
+            Workspace Discussion
+        </h2>
+
+        <p>Discuss ideas with your teammates.</p>
+
+    </div>
+
+    <div class="discussion-messages" id="discussionMessages">
+
+        <!-- Messages appear here -->
+
+    </div>
+
+    <div class="discussion-input">
+
+        <textarea
+            id="discussionInput"
+            placeholder="Type your message..."
+        ></textarea>
+
+        <button id="sendDiscussionBtn">
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+            Send
+
+        </button>
+
+    </div>
+
+</section>
+        
+                <!-- ======================================
+                    ACTIVITY
+        ======================================= -->
+
+        <section id="activity" class="tab-content">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Workspace Activity</h2>
+
+                    <p>Recent actions performed in this workspace.</p>
+
+                </div>
+
+            </div>
+
+            <div id="activityContainer" class="activity-list">
+
+                <div class="empty-box">
+
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+
+                    <h3>No Activity Yet</h3>
+
+                    <p>Activities will appear here automatically.</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ======================================
+                INVITE MEMBER MODAL
+    ======================================= -->
+
+    <div id="inviteModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>Invite Member</h2>
+
+                <button class="close-modal">&times;</button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <input
+                    type="text"
+                    id="memberName"
+                    placeholder="Enter member name">
+
+                <button id="saveMemberBtn" class="action-btn primary">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Invite
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ======================================
+                CREATE TASK MODAL
+    ======================================= -->
+
+    <div id="taskModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>Create Task</h2>
+
+                <button class="close-modal">&times;</button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <input
+                    type="text"
+                    id="taskTitle"
+                    placeholder="Task title">
+
+                <textarea
+                    id="taskDescription"
+                    rows="4"
+                    placeholder="Task description"></textarea>
+
+                <select id="taskStatus">
+
+                    <option value="todo">To Do</option>
+
+                    <option value="progress">In Progress</option>
+
+                    <option value="completed">Completed</option>
+
+                </select>
+
+                <button id="saveTaskBtn" class="action-btn primary">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Task
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ======================================
+                CREATE NOTE MODAL
+    ======================================= -->
+
+    <div id="noteModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>New Note</h2>
+
+                <button class="close-modal">&times;</button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <input
+                    type="text"
+                    id="noteTitle"
+                    placeholder="Note title">
+
+                <textarea
+                    id="noteContent"
+                    rows="6"
+                    placeholder="Write your note..."></textarea>
+
+                <button id="saveNoteBtn" class="action-btn primary">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Note
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ======================================
+                UPLOAD FILE MODAL
+    ======================================= -->
+
+    <div id="fileModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>Upload File</h2>
+
+                <button class="close-modal">&times;</button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <input
+                    type="file"
+                    id="workspaceFile">
+
+                <button id="uploadBtn" class="action-btn primary">
+
+                    <i class="fa-solid fa-upload"></i>
+
+                    Upload
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ======================================
+                JAVASCRIPT
+    ======================================= -->
+
+    <script src="sidebar.js"></script>
+<script src="workspace.js"></script>
+
+</body>
+
+</html>
