@@ -143,44 +143,73 @@ document.getElementById("profileHeaderRole");
 
 
 /* ==========================================
-        DEFAULT PROFILE
+        PROFILE STATE
 ========================================== */
 
-let profile = JSON.parse(
-
-    localStorage.getItem("ideaSphereProfile")
-
-) || {
-
-    name:"Keerthana",
-
-    username:"@keerthana",
-
-    bio:"Building ideas into reality ✨",
-
-    role:"Workspace Owner"
-
-};
+let profile = null;
 
 
 /* ==========================================
         LOAD PROFILE
 ========================================== */
 
-function loadProfile(){
+async function loadProfile() {
 
-    profileName.textContent = profile.name;
+    try {
 
-    profileUsername.textContent = profile.username;
+        const result =
+            await getCurrentUser();
 
-    profileBio.textContent = profile.bio;
 
-    profileHeaderName.textContent = profile.name;
+        if (!result.success) {
 
-    profileHeaderRole.textContent = profile.role;
+            console.error(
+                "Load Profile Error:",
+                result.message
+            );
 
-    profileInitial.textContent =
-    profile.name.charAt(0).toUpperCase();
+            return;
+
+        }
+
+
+        profile =
+            result.user;
+
+
+        profileName.textContent =
+            profile.fullName || "User";
+
+        profileUsername.textContent =
+            profile.username || "";
+
+        profileBio.textContent =
+            profile.bio || "No bio added.";
+
+        profileHeaderName.textContent =
+            profile.fullName || "User";
+
+        profileHeaderRole.textContent =
+            profile.role || "Workspace Owner";
+
+        profileInitial.textContent =
+            (
+                profile.fullName ||
+                "U"
+            )
+            .charAt(0)
+            .toUpperCase();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Load Profile Error:",
+            error
+        );
+
+    }
 
 }
 
@@ -189,17 +218,37 @@ function loadProfile(){
         OPEN MODAL
 ========================================== */
 
-editProfileBtn.addEventListener("click",function(){
+editProfileBtn.addEventListener(
+    "click",
+    function () {
 
-    profileNameInput.value = profile.name;
+        if (!profile) {
 
-    profileUsernameInput.value = profile.username;
+            console.warn(
+                "Profile is still loading."
+            );
 
-    profileBioInput.value = profile.bio;
+            return;
 
-    editProfileModal.classList.add("active");
+        }
 
-});
+
+        profileNameInput.value =
+            profile.fullName || "";
+
+        profileUsernameInput.value =
+            profile.username || "";
+
+        profileBioInput.value =
+            profile.bio || "";
+
+
+        editProfileModal.classList.add(
+            "active"
+        );
+
+    }
+);
 
 
 /* ==========================================
@@ -228,47 +277,93 @@ editProfileModal.addEventListener("click",function(e){
         SAVE PROFILE
 ========================================== */
 
-saveProfileBtn.addEventListener("click",function(){
+saveProfileBtn.addEventListener(
+    "click",
+    async function () {
 
-    profile.name = profileNameInput.value.trim();
+        const fullName =
+            profileNameInput.value.trim();
 
-    profile.username = profileUsernameInput.value.trim();
+        const username =
+            profileUsernameInput.value.trim();
 
-    profile.bio = profileBioInput.value.trim();
+        const bio =
+            profileBioInput.value.trim();
 
-    if(profile.name===""){
 
-        alert("Please enter your name.");
+        if (fullName === "") {
 
-        return;
+            alert(
+                "Please enter your name."
+            );
+
+            return;
+
+        }
+
+
+        const updatedProfile = {
+
+            fullName,
+
+            username:
+                username || "@user",
+
+            bio:
+                bio || "No bio added."
+
+        };
+
+
+        try {
+
+            const result =
+                await updateProfile(
+                    updatedProfile
+                );
+
+
+            if (!result.success) {
+
+                alert(
+                    result.message ||
+                    "Unable to update profile."
+                );
+
+                return;
+
+            }
+
+
+            profile =
+                result.user;
+
+
+            await loadProfile();
+
+
+            editProfileModal.classList.remove(
+                "active"
+            );
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Save Profile Error:",
+                error
+            );
+
+            alert(
+                "Unable to update profile."
+            );
+
+        }
 
     }
-
-    if(profile.username===""){
-
-        profile.username="@user";
-
-    }
-
-    if(profile.bio===""){
-
-        profile.bio="No bio added.";
-
-    }
-
-    localStorage.setItem(
-
-        "ideaSphereProfile",
-
-        JSON.stringify(profile)
-
-    );
-
-    loadProfile();
-
-    editProfileModal.classList.remove("active");
-
-});
+);
 
 
 /* ==========================================

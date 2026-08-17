@@ -2,16 +2,19 @@
         IDEASPHERE ANALYTICS
 ================================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
 
 
     /* ==================================================
             LOAD IDEAS
     ================================================== */
 
-    const ideas = JSON.parse(
-        localStorage.getItem("ideas")
-    ) || [];
+    const response = await getIdeas();
+
+const ideas =
+    response.success && Array.isArray(response.ideas)
+        ? response.ideas
+        : [];
 
 
     /* ==================================================

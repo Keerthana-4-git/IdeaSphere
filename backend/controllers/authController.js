@@ -55,7 +55,7 @@ const registerUser = async (req, res) => {
 };
 
 /* =====================================
-            LOGIN USER
+LOGIN USER
 ===================================== */
 
 const loginUser = async (req, res) => {
@@ -63,7 +63,14 @@ const loginUser = async (req, res) => {
 
         const { email, password } = req.body;
 
+        console.log("LOGIN STEP 1: Finding user...");
+
         const user = await User.findOne({ email });
+
+        console.log(
+            "LOGIN STEP 2: User found:",
+            user ? "YES" : "NO"
+        );
 
         if (!user) {
             return res.status(404).json({
@@ -72,9 +79,16 @@ const loginUser = async (req, res) => {
             });
         }
 
+        console.log("LOGIN STEP 3: Comparing password...");
+
         const isMatch = await bcrypt.compare(
             password,
             user.password
+        );
+
+        console.log(
+            "LOGIN STEP 4: Password match:",
+            isMatch
         );
 
         if (!isMatch) {
@@ -83,44 +97,37 @@ const loginUser = async (req, res) => {
                 message: "Invalid password."
             });
         }
-        
+
+        console.log("LOGIN STEP 5: Creating JWT...");
 
         const token = jwt.sign(
-
             { id: user._id },
-
             process.env.JWT_SECRET,
-
             {
                 expiresIn: "7d"
             }
-
         );
 
+        console.log("LOGIN STEP 6: Login successful!");
+
         res.json({
-
             success: true,
-
             token,
-
             user
-
         });
 
     }
 
     catch (error) {
 
+        console.error("LOGIN ERROR:", error);
+
         res.status(500).json({
-
             success: false,
-
             message: error.message
-
         });
 
     }
-
 };
 
 /* =====================================
@@ -213,9 +220,10 @@ console.log("3️⃣ USER SAVED SUCCESSFULLY");
             });
 
 
-        const resetLink =
-            `http://127.0.0.1:5500/reset-password.html?token=${resetToken}`;
+       const resetLink =
+    `http://10.177.207.75:5500/reset-password.html?token=${resetToken}`;
 
+    
 console.log("4️⃣ SMTP TRANSPORTER CREATED");
 console.log("5️⃣ SENDING RESET EMAIL...");
 
@@ -437,7 +445,104 @@ const resetPassword = async (req, res) => {
 
 };
 
+/* ==========================================
+        UPDATE PROFILE
+========================================== */
 
+const updateProfile = async (req, res) => {
+
+    try {
+
+        const userId =
+            req.user._id ||
+            req.user.id;
+
+
+        const {
+            fullName,
+            username,
+            bio
+        } = req.body;
+
+
+        const user =
+            await User.findById(userId);
+
+
+        if (!user) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message:
+                    "User not found."
+
+            });
+
+        }
+
+
+        if (fullName !== undefined) {
+
+            user.fullName =
+                fullName.trim();
+
+        }
+
+
+        if (username !== undefined) {
+
+            user.username =
+                username.trim();
+
+        }
+
+
+        if (bio !== undefined) {
+
+            user.bio =
+                bio.trim();
+
+        }
+
+
+        await user.save();
+
+
+        res.status(200).json({
+
+            success: true,
+
+            message:
+                "Profile updated successfully.",
+
+            user
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Update Profile Error:",
+            error
+        );
+
+
+        res.status(500).json({
+
+            success: false,
+
+            message:
+                "Unable to update profile."
+
+        });
+
+    }
+
+};
 
 module.exports = {
 
@@ -447,6 +552,8 @@ module.exports = {
 
     forgotPassword,
 
-    resetPassword
+    resetPassword,
+
+    updateProfile
 
 };

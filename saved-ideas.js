@@ -143,7 +143,7 @@ function normalizeIdea(idea) {
 
 
 /* ==================================================
-                FETCH SAVED IDEAS
+                FETCH ALL SAVED IDEAS
 ================================================== */
 
 async function fetchSavedIdeas() {
@@ -154,7 +154,7 @@ async function fetchSavedIdeas() {
 
     if (!token) {
 
-        console.error(
+        console.warn(
             "No authentication token found."
         );
 
@@ -169,61 +169,120 @@ async function fetchSavedIdeas() {
 
     try {
 
-        const response =
-            await fetch(
+        /* ==========================================
+                    MY SAVED IDEAS
+        ========================================== */
 
-                `${API_BASE_URL}/ideas/saved`,
-
-                {
-
-                    method: "GET",
-
-                    headers: {
-
-                        "Authorization":
-                            `Bearer ${token}`,
-
-                        "Content-Type":
-                            "application/json"
-
-                    }
-
-                }
-
-            );
+        const myResult =
+            await getSavedIdeas();
 
 
-        const data =
-            await response.json();
+        /* ==========================================
+                EXPLORE SAVED IDEAS
+        ========================================== */
+
+        const exploreResult =
+            await getSavedExploreIdeas();
 
 
-        console.log(
-            "Saved Ideas from MongoDB:",
-            data
-        );
+        /* ==========================================
+                    MY IDEAS
+        ========================================== */
+
+        let mySavedIdeas = [];
 
 
-        if (!response.ok) {
+        if (
+            myResult.success &&
+            Array.isArray(myResult.ideas)
+        ) {
 
-            throw new Error(
+            mySavedIdeas =
+                myResult.ideas.map(
 
-                data.message ||
-                "Failed to fetch saved ideas."
+                    idea => ({
 
-            );
+                        ...idea,
+
+                        id:
+                            idea._id ||
+                            idea.id,
+
+                        source:
+                            "my"
+
+                    })
+
+                );
 
         }
 
 
-        savedIdeas =
+        /* ==========================================
+                EXPLORE IDEAS
+        ========================================== */
 
-            Array.isArray(data.ideas)
+        let exploreSavedIdeas = [];
 
-                ? data.ideas.map(
-                    normalizeIdea
-                )
 
-                : [];
+        if (
+            exploreResult.success &&
+            Array.isArray(exploreResult.ideas)
+        ) {
+
+            exploreSavedIdeas =
+                exploreResult.ideas.map(
+
+                    idea => ({
+
+                        ...idea,
+
+                        id:
+                            idea._id ||
+                            idea.id,
+
+                        source:
+                            "explore",
+
+                        exploreId:
+                            idea.exploreId
+
+                    })
+
+                );
+
+        }
+
+
+        /* ==========================================
+                COMBINE BOTH SOURCES
+        ========================================== */
+
+        savedIdeas = [
+
+            ...mySavedIdeas,
+
+            ...exploreSavedIdeas
+
+        ];
+
+
+        console.log(
+            "Saved My Ideas:",
+            mySavedIdeas
+        );
+
+
+        console.log(
+            "Saved Explore Ideas:",
+            exploreSavedIdeas
+        );
+
+
+        console.log(
+            "All Saved Ideas:",
+            savedIdeas
+        );
 
 
         displaySavedIdeas();
@@ -239,6 +298,7 @@ async function fetchSavedIdeas() {
 
 
         savedIdeas = [];
+
 
         displaySavedIdeas();
 
@@ -264,60 +324,19 @@ function getMySavedIdeas() {
 
 
 /* ==================================================
-            GET EXPLORE SAVED IDEAS
+              GET EXPLORE SAVED IDEAS
 ================================================== */
 
 function getExploreSavedIdeas() {
 
-    /*
-        Explore saved ideas are still supported
-        through the existing localStorage flow.
-    */
+    return savedIdeas.filter(
 
-    let exploreIdeas = [];
-
-
-    try {
-
-        exploreIdeas =
-            JSON.parse(
-
-                localStorage.getItem(
-                    "exploreSavedIdeas"
-                )
-
-            ) || [];
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Unable to read explore saved ideas:",
-            error
-        );
-
-    }
-
-
-    return exploreIdeas.map(
-
-        idea => ({
-
-            ...idea,
-
-            id:
-                idea._id ||
-                idea.id,
-
-            source: "explore"
-
-        })
+        idea =>
+            idea.source === "explore"
 
     );
 
 }
-
 
 /* ==================================================
                 GET ALL SAVED IDEAS
@@ -963,45 +982,16 @@ async function removeSavedIdea(
 
         try {
 
-            const response =
-                await fetch(
-
-                    `${API_BASE_URL}/ideas/${id}/save`,
-
-                    {
-
-                        method: "DELETE",
-
-                        headers: {
-
-                            "Authorization":
-                                `Bearer ${token}`,
-
-                            "Content-Type":
-                                "application/json"
-
-                        }
-
-                    }
-
-                );
+            const result =
+                await unsaveIdea(id);
 
 
-            const data =
-                await response.json();
-
-
-            console.log(
-                "UNSAVE RESULT:",
-                data
-            );
-
-
-            if (!response.ok) {
+            if (!result.success) {
 
                 throw new Error(
 
-                    data.message ||
+                    result.message ||
+
                     "Failed to remove saved idea."
 
                 );
@@ -1037,8 +1027,11 @@ async function removeSavedIdea(
         catch (error) {
 
             console.error(
+
                 "Unsave Idea Error:",
+
                 error
+
             );
 
 
@@ -1047,6 +1040,7 @@ async function removeSavedIdea(
                 "Unable to Remove",
 
                 error.message ||
+
                 "Something went wrong."
 
             );
@@ -1060,73 +1054,149 @@ async function removeSavedIdea(
 
 
     /* ==================================================
-                EXPLORE IDEA
+                    EXPLORE IDEA
     ================================================== */
 
     if (source === "explore") {
 
-        let exploreSavedIdeas = [];
-
-
         try {
 
-            exploreSavedIdeas =
-                JSON.parse(
+            const exploreIdea =
+                savedIdeas.find(
 
-                    localStorage.getItem(
-                        "exploreSavedIdeas"
-                    )
+                    idea =>
 
-                ) || [];
+                        idea.source === "explore" &&
+
+                        String(
+                            idea.id
+                        ) ===
+                        String(id)
+
+                );
+
+
+            if (!exploreIdea) {
+
+                showSavedToast(
+
+                    "Unable to Remove",
+
+                    "Saved Explore idea was not found."
+
+                );
+
+                return;
+
+            }
+
+
+            const exploreId =
+                exploreIdea.exploreId;
+
+
+            if (!exploreId) {
+
+                showSavedToast(
+
+                    "Unable to Remove",
+
+                    "Explore idea ID is missing."
+
+                );
+
+                return;
+
+            }
+
+
+            /* ==========================================
+                    DELETE FROM MONGODB
+            ========================================== */
+
+            const result =
+                await unsaveExploreIdea(
+                    exploreId
+                );
+
+
+            if (!result.success) {
+
+                throw new Error(
+
+                    result.message ||
+
+                    "Failed to remove saved Explore idea."
+
+                );
+
+            }
+
+
+            /* ==========================================
+                    REMOVE FROM LOCAL PAGE STATE
+            ========================================== */
+
+            savedIdeas =
+                savedIdeas.filter(
+
+                    idea =>
+
+                        !(
+                            idea.source === "explore" &&
+
+                            String(
+                                idea.id
+                            ) ===
+                            String(id)
+
+                        )
+
+                );
+
+
+            showSavedToast(
+
+                "Idea Removed",
+
+                "The idea was removed from your saved collection."
+
+            );
+
+
+            displaySavedIdeas();
 
         }
 
         catch (error) {
 
-            exploreSavedIdeas = [];
+            console.error(
 
-        }
+                "Unsave Explore Idea Error:",
 
-
-        exploreSavedIdeas =
-            exploreSavedIdeas.filter(
-
-                idea =>
-
-                    String(
-                        idea._id ||
-                        idea.id
-                    ) !== String(id)
+                error
 
             );
 
 
-        localStorage.setItem(
+            showSavedToast(
 
-            "exploreSavedIdeas",
+                "Unable to Remove",
 
-            JSON.stringify(
-                exploreSavedIdeas
-            )
+                error.message ||
 
-        );
+                "Something went wrong."
 
+            );
 
-        showSavedToast(
-
-            "Idea Removed",
-
-            "The idea was removed from your saved collection."
-
-        );
+        }
 
 
-        displaySavedIdeas();
+        return;
 
     }
 
 }
-
 
 /* ==================================================
                     SHOW TOAST

@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 
-const ideaSchema = new mongoose.Schema(
+const savedExploreIdeaSchema = new mongoose.Schema(
 
     {
 
         /* ==========================================
-                IDEA OWNER
+                USER WHO SAVED THE IDEA
         ========================================== */
 
         user: {
@@ -16,6 +16,21 @@ const ideaSchema = new mongoose.Schema(
 
             ref:
                 "User",
+
+            required:
+                true
+
+        },
+
+
+        /* ==========================================
+                ORIGINAL EXPLORE IDEA ID
+        ========================================== */
+
+        exploreId: {
+
+            type:
+                String,
 
             required:
                 true
@@ -41,34 +56,6 @@ const ideaSchema = new mongoose.Schema(
         },
 
 
-        problem: {
-
-            type:
-                String,
-
-            required:
-                true,
-
-            trim:
-                true
-
-        },
-
-
-        solution: {
-
-            type:
-                String,
-
-            required:
-                true,
-
-            trim:
-                true
-
-        },
-
-
         category: {
 
             type:
@@ -76,20 +63,6 @@ const ideaSchema = new mongoose.Schema(
 
             default:
                 ""
-
-        },
-
-
-        audience: {
-
-            type:
-                String,
-
-            required:
-                true,
-
-            trim:
-                true
 
         },
 
@@ -105,7 +78,7 @@ const ideaSchema = new mongoose.Schema(
         },
 
 
-        priority: {
+        description: {
 
             type:
                 String,
@@ -116,7 +89,7 @@ const ideaSchema = new mongoose.Schema(
         },
 
 
-        image: {
+        problem: {
 
             type:
                 String,
@@ -126,51 +99,40 @@ const ideaSchema = new mongoose.Schema(
 
         },
 
-/* ==========================================
-        AI VALIDATION
-========================================== */
 
-aiAnalysis: {
+        solution: {
 
-    type: mongoose.Schema.Types.Mixed,
+            type:
+                String,
 
-    default: null
+            default:
+                ""
 
-},
-
-lastValidatedAt: {
-
-    type: Date,
-
-    default: null
-
-},
+        },
 
 
-        /* ==========================================
-                SAVED IDEAS
-        ========================================== */
+        audience: {
 
-        savedBy: [
+            type:
+                String,
 
-            {
+            default:
+                ""
 
-                type:
-                    mongoose.Schema.Types.ObjectId,
+        },
 
-                ref:
-                    "User"
 
-            }
+        tags: {
 
-        ]
+            type:
+                [String],
+
+            default:
+                []
+
+        }
 
     },
-
-
-    /* ==========================================
-            TIMESTAMPS
-    ========================================== */
 
     {
 
@@ -182,8 +144,26 @@ lastValidatedAt: {
 );
 
 
+/* ==========================================
+        PREVENT DUPLICATE SAVES
+========================================== */
+
+savedExploreIdeaSchema.index(
+
+    {
+        user: 1,
+        exploreId: 1
+    },
+
+    {
+        unique: true
+    }
+
+);
+
+
 module.exports =
     mongoose.model(
-        "Idea",
-        ideaSchema
-    );  
+        "SavedExploreIdea",
+        savedExploreIdeaSchema
+    );

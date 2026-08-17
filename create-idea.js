@@ -85,37 +85,18 @@ async function loadIdeaForEdit() {
 
     try {
 
-        const response = await fetch(
-
-            `http://localhost:5000/api/ideas/${selectedIdeaId}`,
-
-            {
-
-                method: "GET",
-
-                headers: {
-
-                    "Authorization":
-                        "Bearer " + token
-
-                }
-
-            }
-
-        );
+    const data =
+        await getIdeaById(selectedIdeaId);
 
 
-        const data =
-            await response.json();
+    console.log(
+        "Edit Idea Response:",
+        data
+    );
 
 
-        console.log(
-            "Edit Idea Response:",
-            data
-        );
 
-
-        if (!response.ok || !data.success) {
+        if (!data.success) {
 
             alert(
                 "⚠️ " +
@@ -376,52 +357,31 @@ ideaForm.addEventListener(
             try {
 
                 const response = await fetch(
+    `http://localhost:5000/api/ideas/${selectedIdeaId}`,
+    {
+        method: "PUT",
 
-                    `http://localhost:5000/api/ideas/${selectedIdeaId}`,
+        headers: {
+            "Content-Type":
+                "application/json",
 
-                    {
+            "Authorization":
+                "Bearer " + token
+        },
 
-                        method: "PUT",
+        body: JSON.stringify({
+            title: title,
+            problem: problemText,
+            solution: solutionText,
+            category: category.value,
+            audience: audienceText,
+            stage: stage.value,
+            priority: priority.value
+        })
+    }
+);
 
-                        headers: {
-
-                            "Content-Type":
-                                "application/json",
-
-                            "Authorization":
-                                "Bearer " + token
-
-                        },
-
-                        body: JSON.stringify({
-
-                            title: title,
-
-                            problem: problemText,
-
-                            solution: solutionText,
-
-                            category:
-                                category.value,
-
-                            audience:
-                                audienceText,
-
-                            stage:
-                                stage.value,
-
-                            priority:
-                                priority.value
-
-                        })
-
-                    }
-
-                );
-
-
-                const data =
-                    await response.json();
+const data = await response.json();
 
 
                 console.log(
@@ -560,18 +520,17 @@ ideaForm.addEventListener(
 
             if (data.success) {
 
-                alert(
-                    "🎉 Idea Created Successfully!"
-                );
+    alert(
+        "🎉 Idea Created Successfully!"
+    );
 
 
-                window.location.href =
-                    "home.html";
+    window.location.href =
+        "home.html";
 
+    return;
 
-                return;
-
-            }
+}
 
 
             alert(

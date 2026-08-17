@@ -426,44 +426,42 @@ button:hover{
 
 @media(max-width:900px){
 
-.container{
+    body {
+        overflow-y: auto;
+        overflow-x: hidden;
+        align-items: flex-start;
+    }
 
-    flex-direction:column;
+    .container {
+        width: 100%;
+        max-width: 95%;
 
-    height:auto;
+        flex-direction: column;
 
-}
+        height: auto;
 
-.left-section{
+        margin: 20px auto;
+    }
 
-    padding:50px 30px;
+    .left-section {
+        padding: 50px 30px;
+    }
 
-}
+    .right-section {
+        padding: 40px 30px;
+    }
 
-.right-section{
+    .logo {
+        width: 130px;
+        height: 130px;
+    }
 
-    padding:40px 30px;
+    .left-section h1 {
+        font-size: 34px;
+    }
 
-}
-
-.logo{
-
-    width:130px;
-
-    height:130px;
-
-}
-
-.left-section h1{
-
-    font-size:34px;
-
-}
-
-.right-section h2{
-
-    font-size:30px;
-
-}
+    .right-section h2 {
+        font-size: 30px;
+    }
 
 }

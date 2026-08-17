@@ -120,20 +120,7 @@ let workspace = null;
                     HELPERS
 ========================================================== */
 
-function getWorkspaces() {
 
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-
-}
-
-function saveWorkspaces(workspaces) {
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(workspaces)
-    );
-
-}
 
 function getCurrentWorkspaceId() {
 
@@ -200,68 +187,125 @@ function createDefaultWorkspace() {
 /* ==========================================================
                 LOAD CURRENT WORKSPACE
 ========================================================== */
+async function loadWorkspace() {
 
-function loadWorkspace() {
+    try {
 
-    const workspaces = getWorkspaces();
-    const currentId = getCurrentWorkspaceId();
+        const response = await getWorkspaces();
 
-    if (workspaces.length === 0) {
+        if (!response.success) {
 
-        workspace = createDefaultWorkspace();
+            console.error(
+                "Failed to load workspaces:",
+                response.message
+            );
 
-        workspaces.push(workspace);
+            workspace = createDefaultWorkspace();
 
-        saveWorkspaces(workspaces);
-
-        saveCurrentWorkspace(workspace.id);
-
-        return;
-    }
-
-    workspace = workspaces.find(ws => ws.id === currentId);
-
-    if (!workspace) {
-
-        workspace = workspaces[0];
-
-        saveCurrentWorkspace(workspace.id);
-
-    }
-
-    // Convert old numeric members to array
-
-    if (!Array.isArray(workspace.members)) {
-
-        const count = Number(workspace.members) || 1;
-
-        workspace.members = [];
-
-        for (let i = 0; i < count; i++) {
-
-            workspace.members.push({
-
-                id: generateId(),
-
-                name: i === 0 ? "Workspace Owner" : `Member ${i + 1}`,
-
-                role: i === 0 ? "Owner" : "Collaborator"
-
-            });
+            return;
 
         }
 
+        const workspaces = response.workspaces || [];
+
+        /* ==========================================
+                NO WORKSPACE EXISTS
+        ========================================== */
+
+        if (workspaces.length === 0) {
+
+            const response = await createWorkspace({
+
+                name: "New Workspace",
+
+                description:
+                    "Start collaborating with your team.",
+
+                category: "General",
+
+                members: [],
+
+                tasks: [],
+
+                notes: [],
+
+                files: [],
+
+                activity: [],
+
+                discussions: []
+
+            });
+
+            if (!response.success) {
+
+                console.error(
+                    "Failed to create default workspace:",
+                    response.message
+                );
+
+                workspace = createDefaultWorkspace();
+
+                return;
+
+            }
+
+            workspace = response.workspace;
+
+            localStorage.setItem(
+                CURRENT_KEY,
+                workspace._id
+            );
+
+            return;
+
+        }
+
+        /* ==========================================
+                GET CURRENT WORKSPACE
+        ========================================== */
+
+        const currentId =
+            localStorage.getItem(CURRENT_KEY);
+
+        workspace =
+            workspaces.find(
+                ws => ws._id === currentId
+            ) || workspaces[0];
+
+        /* ==========================================
+                SAVE CURRENT ID
+        ========================================== */
+
+        localStorage.setItem(
+            CURRENT_KEY,
+            workspace._id
+        );
+
+        /* ==========================================
+                ENSURE ARRAYS EXIST
+        ========================================== */
+
+        workspace.members ??= [];
+        workspace.tasks ??= [];
+        workspace.notes ??= [];
+        workspace.files ??= [];
+        workspace.activity ??= [];
+        workspace.discussions ??= [];
+
     }
 
-    // ALWAYS ensure these exist
+    catch (error) {
 
-    workspace.tasks ??= [];
-    workspace.notes ??= [];
-    workspace.files ??= [];
-    workspace.activity ??= [];
-    workspace.discussions ??= [];
+        console.error(
+            "Load Workspace Error:",
+            error
+        );
 
-    saveWorkspace();
+        workspace =
+            createDefaultWorkspace();
+
+    }
 
 }
 
@@ -270,25 +314,50 @@ function loadWorkspace() {
                 SAVE CURRENT WORKSPACE
 ========================================================== */
 
-function saveWorkspace() {
+async function saveWorkspace() {
 
-    const workspaces = getWorkspaces();
+    if (!workspace || !workspace._id) {
+        return;
+    }
 
-    const index = workspaces.findIndex(
-        ws => ws.id === workspace.id
-    );
+    try {
 
-    if (index !== -1) {
+        const data = {
+            name: workspace.name,
+            description: workspace.description,
+            category: workspace.category,
+            members: workspace.members,
+            tasks: workspace.tasks,
+            notes: workspace.notes,
+            files: workspace.files,
+            activity: workspace.activity,
+            discussions: workspace.discussions
+        };
 
-        workspaces[index] = workspace;
+        const response = await updateWorkspace(
+            workspace._id,
+            data
+        );
 
-    } else {
+        if (!response.success) {
 
-        workspaces.push(workspace);
+            console.error(
+                "Workspace save failed:",
+                response.message
+            );
+
+        }
 
     }
 
-    saveWorkspaces(workspaces);
+    catch (error) {
+
+        console.error(
+            "Workspace backend save error:",
+            error
+        );
+
+    }
 
 }
 
@@ -1831,24 +1900,19 @@ function refreshWorkspace() {
                 INITIALIZE APP
 ========================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
 
-    loadWorkspace();
+        await loadWorkspace();
 
-    refreshWorkspace();
+        refreshWorkspace();
 
-    restoreActiveTab();
+        restoreActiveTab();
 
-});
+    }
+);
 
 
-/* ==========================================================
-                AUTO SAVE
-========================================================== */
 
-window.addEventListener("beforeunload", () => {
-
-    saveWorkspace();
-
-});
 

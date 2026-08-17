@@ -48,42 +48,39 @@ let editingWorkspaceId = null;
                     LOCAL STORAGE
 ========================================================== */
 
-function loadWorkspaces() {
-
-    const data = localStorage.getItem(STORAGE_KEY);
-
-    if (!data) {
-
-        workspaces = [];
-        return;
-
-    }
+async function loadWorkspaces() {
 
     try {
 
-        workspaces = JSON.parse(data);
+        const response = await getWorkspaces();
+
+        if (!response.success) {
+
+            console.error(
+                "Load Workspaces Error:",
+                response.message
+            );
+
+            workspaces = [];
+
+            return;
+
+        }
+
+        workspaces = response.workspaces || [];
 
     }
 
     catch (error) {
 
-        console.error("Unable to load workspaces.", error);
+        console.error(
+            "Load Workspaces Error:",
+            error
+        );
 
         workspaces = [];
 
     }
-
-}
-
-function saveWorkspaces() {
-
-    localStorage.setItem(
-
-        STORAGE_KEY,
-
-        JSON.stringify(workspaces)
-
-    );
 
 }
 
@@ -129,7 +126,7 @@ function createWorkspaceCard(workspace) {
 
     card.className = "workspace-card";
 
-    card.dataset.id = workspace.id;
+    card.dataset.id = workspace._id;
 
     card.innerHTML = `
 
@@ -161,13 +158,13 @@ function createWorkspaceCard(workspace) {
 
             <span>
 
-                👥 ${workspace.members}
+                👥 ${workspace.members?.length || 0}
 
             </span>
 
             <span>
 
-                ${workspace.status}
+                ${workspace.status || "Active"}
 
             </span>
 
@@ -197,7 +194,7 @@ function createWorkspaceCard(workspace) {
 
                 data-action="open"
 
-                data-id="${workspace.id}"
+                data-id="${workspace._id}"
 
             >
 
@@ -213,7 +210,7 @@ function createWorkspaceCard(workspace) {
 
                 data-action="edit"
 
-                data-id="${workspace.id}"
+                data-id="${workspace._id}"
 
             >
 
@@ -229,7 +226,7 @@ function createWorkspaceCard(workspace) {
 
                 data-action="delete"
 
-                data-id="${workspace.id}"
+                data-id="${workspace._id}"
 
             >
 
@@ -331,44 +328,69 @@ function renderWorkspaces(list = workspaces) {
 
 }
 
-/* ==========================================================
-                INITIAL LOAD
-========================================================== */
 
-loadWorkspaces();
-
-renderWorkspaces();
 /* ==========================================================
                     CREATE WORKSPACE
 ========================================================== */
 
-function createWorkspace() {
+async function handleCreateWorkspace() {
 
-    const workspace = {
-
-        id: generateId(),
+    const data = {
 
         name: workspaceName.value.trim(),
 
-        description: workspaceDescription.value.trim(),
+        description:
+            workspaceDescription.value.trim(),
 
-        category: workspaceCategory.value,
-
-        status: workspaceStatus.value,
-
-        members: Number(workspaceMembers.value),
-
-        createdAt: new Date().toISOString()
+        category:
+            workspaceCategory.value
 
     };
 
-    workspaces.unshift(workspace);
 
-    saveWorkspaces();
+    try {
 
-    renderWorkspaces();
+        const response =
+            await createWorkspace(data);
 
-    showToast("Workspace created successfully!", "success");
+        if (!response.success) {
+
+            showToast(
+                response.message ||
+                "Unable to create workspace.",
+                "error"
+            );
+
+            return;
+
+        }
+
+        workspaces.unshift(
+            response.workspace
+        );
+
+        renderWorkspaces();
+
+        showToast(
+            "Workspace created successfully!",
+            "success"
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Create Workspace Error:",
+            error
+        );
+
+        showToast(
+            "Unable to create workspace.",
+            "error"
+        );
+
+    }
 
 }
 
@@ -376,31 +398,87 @@ function createWorkspace() {
                     UPDATE WORKSPACE
 ========================================================== */
 
-function updateWorkspace() {
+async function handleUpdateWorkspace() {
 
-    const index = workspaces.findIndex(
+    const workspace =
+        workspaces.find(
+            workspace =>
+                workspace._id === editingWorkspaceId
+        );
 
-        workspace => workspace.id === editingWorkspaceId
+    if (!workspace) return;
 
-    );
 
-    if(index === -1) return;
+    const data = {
 
-    workspaces[index].name = workspaceName.value.trim();
+        name:
+            workspaceName.value.trim(),
 
-    workspaces[index].description = workspaceDescription.value.trim();
+        description:
+            workspaceDescription.value.trim(),
 
-    workspaces[index].category = workspaceCategory.value;
+        category:
+            workspaceCategory.value
 
-    workspaces[index].status = workspaceStatus.value;
+    };
 
-    workspaces[index].members = Number(workspaceMembers.value);
 
-    saveWorkspaces();
+    try {
 
-    renderWorkspaces();
+        const response =
+            await updateWorkspace(
+                editingWorkspaceId,
+                data
+            );
 
-    showToast("Workspace updated successfully!", "success");
+        if (!response.success) {
+
+            showToast(
+                response.message ||
+                "Unable to update workspace.",
+                "error"
+            );
+
+            return;
+
+        }
+
+        const index =
+            workspaces.findIndex(
+                workspace =>
+                    workspace._id ===
+                    editingWorkspaceId
+            );
+
+        if (index !== -1) {
+
+            workspaces[index] =
+                response.workspace;
+
+        }
+
+        renderWorkspaces();
+
+        showToast(
+            "Workspace updated successfully!",
+            "success"
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Update Workspace Error:",
+            error
+        );
+
+        showToast(
+            "Unable to update workspace.",
+            "error"
+        );
+
+    }
 
 }
 
@@ -408,27 +486,61 @@ function updateWorkspace() {
                     DELETE WORKSPACE
 ========================================================== */
 
-function deleteWorkspace(id){
+async function handleDeleteWorkspace(id) {
 
-    const confirmed = confirm(
+    const confirmed =
+        confirm(
+            "Delete this workspace permanently?"
+        );
 
-        "Delete this workspace permanently?"
+    if (!confirmed) return;
 
-    );
 
-    if(!confirmed) return;
+    try {
 
-    workspaces = workspaces.filter(
+        const response =
+            await deleteWorkspace(id);
 
-        workspace => workspace.id !== id
+        if (!response.success) {
 
-    );
+            showToast(
+                response.message ||
+                "Unable to delete workspace.",
+                "error"
+            );
 
-    saveWorkspaces();
+            return;
 
-    renderWorkspaces();
+        }
 
-    showToast("Workspace deleted.", "success");
+        workspaces =
+            workspaces.filter(
+                workspace =>
+                    workspace._id !== id
+            );
+
+        renderWorkspaces();
+
+        showToast(
+            "Workspace deleted.",
+            "success"
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Delete Workspace Error:",
+            error
+        );
+
+        showToast(
+            "Unable to delete workspace.",
+            "error"
+        );
+
+    }
 
 }
 
@@ -440,7 +552,7 @@ function editWorkspace(id){
 
     const workspace = workspaces.find(
 
-        workspace => workspace.id === id
+        workspace => workspace._id === id
 
     );
 
@@ -550,17 +662,13 @@ workspaceGrid.addEventListener("click",(event)=>{
 
     switch(action){
 
-        case "edit":
+       case "edit":
+    editWorkspace(id);
+    break;
 
-            editWorkspace(id);
-
-            break;
-
-        case "delete":
-
-            deleteWorkspace(id);
-
-            break;
+case "delete":
+    handleDeleteWorkspace(id);
+    break;  
 
         case "open":
 
@@ -604,7 +712,7 @@ workspaceForm.addEventListener(
 
         else{
 
-            createWorkspace();
+            handleCreateWorkspace();
 
         }
 
@@ -877,16 +985,15 @@ function showToast(message,type="success"){
                     INITIALIZATION
 ========================================================== */
 
-function initializeCollaborationHub(){
+async function initializeCollaborationHub() {
 
-    loadWorkspaces();
+    await loadWorkspaces();
 
     renderWorkspaces();
 
     updateStatistics();
 
 }
-
 /* ==========================================================
                     START APP
 ========================================================== */
@@ -943,41 +1050,8 @@ let invitations = [];
 
 let currentWorkspace = null;
 
-/* =============================================
-        LOAD INVITATIONS
-============================================= */
 
-function loadInvitations(){
 
-    const data = localStorage.getItem(INVITE_STORAGE);
-
-    if(data){
-
-        invitations = JSON.parse(data);
-
-    }else{
-
-        invitations = [];
-
-    }
-
-}
-
-/* =============================================
-        SAVE INVITATIONS
-============================================= */
-
-function saveInvitations(){
-
-    localStorage.setItem(
-
-        INVITE_STORAGE,
-
-        JSON.stringify(invitations)
-
-    );
-
-}
 
 /* =============================================
         INVITE LINK
@@ -1019,7 +1093,9 @@ function openInvitePanel(workspace){
 
     generateInviteLink();
 
-    renderInvitations();
+    loadWorkspaceInvitations(
+    workspace._id || workspace.id
+);
 
     inviteOverlay.classList.add("active");
 
@@ -1173,11 +1249,57 @@ function renderInvitations(){
 
 }
 
-/* =============================================
-        INITIALIZE
-============================================= */
+async function loadWorkspaceInvitations(
+    workspaceId
+) {
 
-loadInvitations();
+    try {
+
+        const result =
+            await getWorkspaceInvitations(
+                workspaceId
+            );
+
+
+        if (!result.success) {
+
+            console.error(
+                "Load Invitations Error:",
+                result.message
+            );
+
+            invitations = [];
+
+            renderInvitations();
+
+            return;
+
+        }
+
+
+        invitations =
+            result.invitations || [];
+
+
+        renderInvitations();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Load Invitations Error:",
+            error
+        );
+
+        invitations = [];
+
+        renderInvitations();
+
+    }
+
+}
+
 /* ======================================================
         Invite Members Panel - Part 3B
 ====================================================== */
@@ -1202,38 +1324,37 @@ inviteForm.addEventListener(
 
     "submit",
 
-    function(event){
+    async function(event){
 
         event.preventDefault();
 
-        const email = inviteEmail.value.trim().toLowerCase();
+        const email =
+            inviteEmail.value.trim().toLowerCase();
 
-        const role = inviteRole.value;
+        const role =
+            inviteRole.value;
 
-        const message = inviteMessage.value.trim();
+        const message =
+            inviteMessage.value.trim();
+
 
         if(!currentWorkspace){
 
             showToast(
-
                 "No workspace selected.",
-
                 "error"
-
             );
 
             return;
 
         }
 
-        if(email===""){
+
+        if(email === ""){
 
             showToast(
-
                 "Please enter an email address.",
-
                 "error"
-
             );
 
             inviteEmail.focus();
@@ -1241,15 +1362,13 @@ inviteForm.addEventListener(
             return;
 
         }
+
 
         if(!isValidEmail(email)){
 
             showToast(
-
                 "Please enter a valid email.",
-
                 "error"
-
             );
 
             inviteEmail.focus();
@@ -1258,19 +1377,63 @@ inviteForm.addEventListener(
 
         }
 
-        const alreadyInvited = invitations.find(invite=>
 
-            invite.workspaceId===currentWorkspace.id &&
+        const workspaceId =
+            currentWorkspace._id ||
+            currentWorkspace.id;
 
-            invite.email===email
 
-        );
+        const alreadyInvited =
+            invitations.find(invite =>
+
+                (
+                    invite.workspace?._id ||
+                    invite.workspace ||
+                    invite.workspaceId
+                ) === workspaceId &&
+
+                invite.email === email &&
+
+                (
+                    invite.status === "Pending" ||
+                    invite.status === undefined
+                )
+
+            );
+
 
         if(alreadyInvited){
 
             showToast(
-
                 "This email has already been invited.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const result =
+            await createInvitation({
+
+                workspaceId,
+
+                email,
+
+                role,
+
+                message
+
+            });
+
+
+        if(!result.success){
+
+            showToast(
+
+                result.message ||
+                "Unable to send invitation.",
 
                 "error"
 
@@ -1280,35 +1443,20 @@ inviteForm.addEventListener(
 
         }
 
-        const invitation={
 
-            id:Date.now().toString(),
+        invitations.unshift(
+            result.invitation
+        );
 
-            workspaceId:currentWorkspace.id,
-
-            workspaceName:currentWorkspace.name,
-
-            email,
-
-            role,
-
-            message,
-
-            status:"Pending",
-
-            invitedAt:new Date().toLocaleString()
-
-        };
-
-        invitations.push(invitation);
-
-        saveInvitations();
 
         renderInvitations();
 
+
         inviteForm.reset();
 
-        inviteRole.value="Editor";
+        inviteRole.value =
+            "Editor";
+
 
         showToast(
 

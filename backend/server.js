@@ -12,6 +12,11 @@ const connectDB = require("./config/db");
 
 const authRoutes = require("./routes/authRoutes");
 const ideaRoutes = require("./routes/ideaRoutes");
+const workspaceRoutes = require("./routes/workspaceRoutes");    
+const invitationRoutes =
+    require("./routes/invitationRoutes");
+const savedExploreRoutes =
+    require("./routes/savedExploreRoutes");
 
 
 const authMiddleware = require("./middleware/authMiddleware");
@@ -73,6 +78,18 @@ app.use(
 app.use("/api/auth", authRoutes);
 
 app.use("/api/ideas", ideaRoutes);
+
+app.use("/api/workspaces", workspaceRoutes);
+
+app.use(
+    "/api/invitations",
+    invitationRoutes
+);
+
+app.use(
+    "/api/explore-saved",
+    savedExploreRoutes
+);
 
 /* ==================================================
         SAVE IDEA DIRECT ROUTE

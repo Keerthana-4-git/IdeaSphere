@@ -679,7 +679,7 @@ renderIdeaSelector();
             currentAnalysis = data.analysis;
 
 
-           saveIdeaAnalysis(
+          await saveIdeaAnalysis(
     idea._id || idea.id,
     currentAnalysis
 );
@@ -1101,50 +1101,63 @@ renderIdeaSelector();
 
 
     /* ==================================================
-            SAVE AI ANALYSIS
-    ================================================== */
+        SAVE AI ANALYSIS
+================================================== */
 
-    function saveIdeaAnalysis(
-        ideaId,
-        analysis
-    ) {
+async function saveIdeaAnalysis(
+    ideaId,
+    analysis
+) {
 
-        const ideaIndex = ideas.findIndex(
+    try {
 
-            function (idea) {
+        const result =
+            await updateIdea(
+                ideaId,
+                {
+                    aiAnalysis:
+                        analysis,
 
-               return String(
-    idea._id || idea.id
-) === String(ideaId);
-
-            }
-
-        );
+                    lastValidatedAt:
+                        new Date().toISOString()
+                }
+            );
 
 
-        if (ideaIndex === -1) {
+        if (!result.success) {
 
-            return;
+            console.error(
+                "Failed to save AI analysis:",
+                result.message
+            );
+
+            return false;
 
         }
 
 
-        ideas[ideaIndex].aiAnalysis = analysis;
-
-        ideas[ideaIndex].lastValidatedAt =
-
-            new Date().toISOString();
-
-
-        localStorage.setItem(
-
-            "ideas",
-
-            JSON.stringify(ideas)
-
+        console.log(
+            "AI analysis saved successfully."
         );
 
+
+        return true;
+
     }
+
+    catch (error) {
+
+        console.error(
+            "Save AI Analysis Error:",
+            error
+        );
+
+
+        return false;
+
+    }
+
+}
 
 
     /* ==================================================

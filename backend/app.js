@@ -3,6 +3,7 @@ const cors = require("cors");
 
 const authRoutes = require("./routes/authRoutes");
 const ideaRoutes = require("./routes/ideaRoutes");
+const workspaceRoutes = require("./routes/workspaceRoutes");
 
 const app = express();
 
@@ -25,6 +26,8 @@ app.use(
 app.use("/api/auth", authRoutes);
 
 app.use("/api/ideas", ideaRoutes);
+
+app.use("/api/workspaces", workspaceRoutes);
 
 /* ===========================================
         HOME
