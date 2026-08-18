@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ================================================== */
 
     const API_URL =
-        "http://localhost:5000/api/validate-idea";
+        "https://ideaspere-622p.onrender.com/api/validate-idea";
 
 
     /* ==================================================
@@ -46,7 +46,7 @@ async function loadIdeasFromBackend() {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/ideas",
+                "https://ideaspere-622p.onrender.com/api/ideas",
                 {
                     method: "GET",
 

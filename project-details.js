@@ -57,7 +57,7 @@ async function loadIdea() {
 
         const response = await fetch(
 
-            `http://localhost:5000/api/ideas/${selectedIdeaId}`,
+            `https://ideaspere-622p.onrender.com/api/ideas/${selectedIdeaId}`,
 
             {
 
@@ -429,7 +429,7 @@ async function isIdeaSaved() {
         const response =
             await fetch(
 
-                "http://localhost:5000/api/ideas/saved",
+                "https://ideaspere-622p.onrender.com/api/ideas/saved",
 
                 {
 
@@ -640,7 +640,7 @@ if (saveBtn) {
                     const response =
                         await fetch(
 
-                            `http://localhost:5000/api/ideas/${selectedIdeaId}/save`,
+                            `https://ideaspere-622p.onrender.com/api/ideas/${selectedIdeaId}/save`,
 
                             {
 
@@ -699,7 +699,7 @@ if (saveBtn) {
                     const response =
                         await fetch(
 
-                            `http://localhost:5000/api/ideas/${selectedIdeaId}/save`,
+                            `https://ideaspere-622p.onrender.com/api/ideas/${selectedIdeaId}/save`,
 
                             {
 
@@ -935,7 +935,7 @@ if (confirmDelete) {
                 const response =
                     await fetch(
 
-                        `http://localhost:5000/api/ideas/${selectedIdeaId}`,
+                        `https://ideaspere-622p.onrender.com/api/ideas/${selectedIdeaId}`,
 
                         {
 
@@ -1139,4 +1139,4 @@ if (logoutBtn) {
         INITIALIZE
 ================================================== */
 
-loadIdea(); 
+loadIdea();

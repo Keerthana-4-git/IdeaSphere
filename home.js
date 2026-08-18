@@ -24,7 +24,7 @@ async function loadCurrentUser() {
 
 
         const response = await fetch(
-            "http://localhost:5000/api/auth/me",
+            "https://ideaspere-622p.onrender.com/api/auth/me",
             {
                 method: "GET",
 
@@ -159,7 +159,7 @@ async function loadIdeas() {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/ideas",
+                "https://ideaspere-622p.onrender.com/api/ideas",
                 {
                     method: "GET",
 
@@ -633,4 +633,3 @@ if (profileBtn) {
 loadCurrentUser();
 
 loadIdeas();
-
