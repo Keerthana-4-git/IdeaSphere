@@ -2,7 +2,7 @@
         IDEASPHERE BACKEND URL
 ========================================== */
 
-const API_URL = "https://ideaspere-622p.onrender.com/api";
+const API_URL = "https://ideasphere-622p.onrender.com/api";
 
 
 /* ==========================================
