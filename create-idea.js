@@ -356,8 +356,8 @@ ideaForm.addEventListener(
 
             try {
 
-                const response = await fetch(
-    `https://ideaspere-622p.onrender.com/api/ideas/${selectedIdeaId}`,
+               const response = await fetch(
+    `https://ideasphere-622p.onrender.com/api/ideas/${selectedIdeaId}`,
     {
         method: "PUT",
 
@@ -462,7 +462,7 @@ const data = await response.json();
             const response =
                 await fetch(
 
-                    "https://ideaspere-622p.onrender.com/api/ideas",
+                    "https://ideasphere-622p.onrender.com/api/ideas",
 
                     {
 
