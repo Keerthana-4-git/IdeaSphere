@@ -15,15 +15,17 @@ app.use(
     cors({
         origin: "https://ideasphere-web.onrender.com",
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        allowedHeaders: ["Content-Type", "Authorization"]
+        allowedHeaders: ["Content-Type", "Authorization"],
+        credentials: false
     })
 );
 
-app.use(
-    express.json({
-        limit: "1mb"
-    })
-);
+app.options("*", cors({
+    origin: "https://ideasphere-web.onrender.com",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false
+}));
 
 /* ===========================================
         ROUTES
