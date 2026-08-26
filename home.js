@@ -24,7 +24,7 @@ async function loadCurrentUser() {
 
 
         const response = await fetch(
-            "https://ideaspere-622p.onrender.com/api/auth/me",
+            "https://ideasphere-622p.onrender.com/api/auth/me",
             {
                 method: "GET",
 
@@ -159,7 +159,7 @@ async function loadIdeas() {
 
         const response =
             await fetch(
-                "https://ideaspere-622p.onrender.com/api/ideas",
+                "https://ideasphere-622p.onrender.com/api/ideas",
                 {
                     method: "GET",
 
