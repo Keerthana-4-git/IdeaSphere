@@ -67,7 +67,14 @@ const REQUEST_TIMEOUT = 45000;
 ================================================== */
 
 
-app.use(cors());
+app.use(
+    cors({
+        origin: "https://ideasphere-web.onrender.com",
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+        credentials: false
+    })
+);
 
 app.use(
     express.json({
