@@ -57,7 +57,7 @@ async function loadIdea() {
 
         const response = await fetch(
 
-            `https://ideaspere-622p.onrender.com/api/ideas/${selectedIdeaId}`,
+            `https://ideasphere-622p.onrender.com/api/ideas/${selectedIdeaId}`,
 
             {
 
@@ -429,7 +429,7 @@ async function isIdeaSaved() {
         const response =
             await fetch(
 
-                "https://ideaspere-622p.onrender.com/api/ideas/saved",
+                "https://ideasphere-622p.onrender.com/api/ideas/saved",
 
                 {
 
@@ -640,7 +640,7 @@ if (saveBtn) {
                     const response =
                         await fetch(
 
-                            `https://ideaspere-622p.onrender.com/api/ideas/${selectedIdeaId}/save`,
+                            `https://ideasphere-622p.onrender.com/api/ideas/${selectedIdeaId}/save`,
 
                             {
 
@@ -699,7 +699,7 @@ if (saveBtn) {
                     const response =
                         await fetch(
 
-                            `https://ideaspere-622p.onrender.com/api/ideas/${selectedIdeaId}/save`,
+                            `https://ideasphere-622p.onrender.com/api/ideas/${selectedIdeaId}/save`,
 
                             {
 
@@ -935,7 +935,7 @@ if (confirmDelete) {
                 const response =
                     await fetch(
 
-                        `https://ideaspere-622p.onrender.com/api/ideas/${selectedIdeaId}`,
+                        `https://ideasphere-622p.onrender.com/api/ideas/${selectedIdeaId}`,
 
                         {
 
