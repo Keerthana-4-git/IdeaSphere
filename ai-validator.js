@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ================================================== */
 
     const API_URL =
-        "https://ideaspere-622p.onrender.com/api/validate-idea";
+        "https://ideasphere-622p.onrender.com/api/validate-idea";
 
 
     /* ==================================================
@@ -46,7 +46,7 @@ async function loadIdeasFromBackend() {
 
         const response =
             await fetch(
-                "https://ideaspere-622p.onrender.com/api/ideas",
+                "https://ideasphere-622p.onrender.com/api/ideas",
                 {
                     method: "GET",
 
